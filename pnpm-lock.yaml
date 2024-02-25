@@ -11,6 +11,9 @@ dependencies:
   '@astrojs/tailwind':
     specifier: 5.1.0
     version: 5.1.0(astro@4.3.2)(tailwindcss@3.4.1)
+  '@fontsource-variable/jost':
+    specifier: 5.0.17
+    version: 5.0.17
   astro:
     specifier: 4.3.2
     version: 4.3.2(typescript@5.3.3)
@@ -602,6 +605,10 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@fontsource-variable/jost@5.0.17:
+    resolution: {integrity: sha512-QIF83vqKVCG5BqzIiEn2ZI6iOG4UjAEsrQ4k+6NUdO/lLWcFOEhBRgmaD7etmxB2r3v5fG/34xI2Jciv4lFnYg==}
+    dev: false
 
   /@isaacs/cliui@8.0.2:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
