@@ -1,38 +1,43 @@
 ---
-import "@fontsource-variable/jost"
+import '@fontsource/geist-sans/400.css';
+import '@fontsource/geist-sans/600.css';
+import '@fontsource/geist-sans/700.css';
 
 interface Props {
-  title: string
+  title: string;
 }
 
-const { title } = Astro.props
-const descriptionPage = ""
+const { title } = Astro.props;
+const descriptionPage = "";
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <title>{title}</title>
-  
+
     <meta charset="UTF-8" />
     <meta name="description" content={descriptionPage} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />    
+    <meta name="viewport" content="width=device-width" />
 
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow" />
   </head>
   <body>
-    <div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
-    <div class="max-w-6xl px-2 lg:px-10 pt-16 md:pt-20 mx-auto">
+    <div
+      class="absolute top-0 z-[-2] h-screen w-screen bg-background bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+    >
+    </div>
+    <div class="max-w-3xl px-2 lg:px-10 pt-16 md:pt-20 mx-auto">
       <slot />
     </div>
   </body>
 </html>
 
 <style is:global>
-  :root{
+  :root {
     --background: hsl(198, 65%, 3.36%);
     --foreground: hsl(198, 10%, 97.1%);
     --card: hsl(198, 45%, 5.46%);
@@ -44,7 +49,7 @@ const descriptionPage = ""
     --secondary: hsl(198, 50%, 12.6%);
     --secondary-foreground: hsl(198, 10%, 97.1%);
     --muted: hsl(198, 50%, 12.6%);
-    --muted-foreground: hsl(198, 10%, 54.2%);
+    --muted-foreground: hsl(196.4, 6.1%, 64.5%);
     --accent: hsl(198, 50%, 12.6%);
     --accent-foreground: hsl(198, 10%, 97.1%);
     --destructive: hsl(0, 84.2%, 60.2%);
@@ -64,10 +69,9 @@ const descriptionPage = ""
   }
 
   html {
-    font-family: "Jost Variable", system-ui, sans-serif;
+    font-family: 'Geist Sans', system-ui, sans-serif;
     scroll-behavior: smooth;
     overflow-x: hidden;
     overscroll-behavior: none;
   }
-
 </style>

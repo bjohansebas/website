@@ -11,9 +11,9 @@ dependencies:
   '@astrojs/tailwind':
     specifier: 5.1.0
     version: 5.1.0(astro@4.3.2)(tailwindcss@3.4.1)
-  '@fontsource-variable/jost':
-    specifier: 5.0.17
-    version: 5.0.17
+  '@fontsource/geist-sans':
+    specifier: 5.0.1
+    version: 5.0.1
   astro:
     specifier: 4.3.2
     version: 4.3.2(typescript@5.3.3)
@@ -619,8 +619,8 @@ packages:
     dev: false
     optional: true
 
-  /@fontsource-variable/jost@5.0.17:
-    resolution: {integrity: sha512-QIF83vqKVCG5BqzIiEn2ZI6iOG4UjAEsrQ4k+6NUdO/lLWcFOEhBRgmaD7etmxB2r3v5fG/34xI2Jciv4lFnYg==}
+  /@fontsource/geist-sans@5.0.1:
+    resolution: {integrity: sha512-Q/GGewhqc6WTtqbOQWaHCar/BZY3H6Nu0J65BuWYOCXUhc/iEhRP9n+7V2KZ3X8+/ZNMCfFzxzrUZrQYB/lnNw==}
     dev: false
 
   /@isaacs/cliui@8.0.2:
