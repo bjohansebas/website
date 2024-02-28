@@ -1,0 +1,85 @@
+---
+import NextJS from "@/components/icons/NextJS.astro";
+import Tailwind from "@/components/icons/Tailwind.astro";
+import CodeIcon from "@/components/icons/Code.astro";
+import ConstructionIcon from "@/components/icons/Construction.astro";
+
+const TAGS = {
+  NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white",
+    icon: NextJS,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: Tailwind,
+  },
+  BUILDING: {
+    name: "Building",
+    class: "bg-[#f18028] text-primary-foreground",
+    icon: ConstructionIcon,
+  },
+};
+
+const PROJECTS = [
+  {
+    title: "Mindfulyze - A tool to unleash your thoughts",
+    description:
+      "A purpose-built journaling tool for mindful self-discovery, enhanced well-being, and goal achievement.",
+    link: "https://mindfilyze.com/",
+    github: "https://github.com/bjohansebas/mindfulyze",
+    image: "/projects/mindfulyze.webp",
+    tags: [TAGS.NEXT, TAGS.TAILWIND],
+  },
+  {
+    title: "FeedVote - The Open Source Feedback Manager",
+    description:
+      "An open-source alternative to Canny, designed to centralize user feedback from different products in one place.",
+    link: "https://dub.sh/feedvote",
+    github: "https://github.com/bjohansebas/mindfulyze",
+    image: "/projects/feedvote.webp",
+    tags: [TAGS.BUILDING, TAGS.NEXT, TAGS.TAILWIND],
+  },
+];
+---
+
+<section class="mx-auto flex max-w-4xl flex-col gap-y-4">
+  <header>
+    <h2
+      class="mb-6 flex items-center gap-x-3 text-3xl font-semibold text-foreground"
+    >
+      <CodeIcon class="size-7" />Projects
+    </h2>
+  </header>
+  <div class="grid grid-cols-[repeat(auto-fit_,minmax(440px,1fr))] gap-4">
+    {
+      PROJECTS.map(({ title, tags, description }) => (
+        <article class="rounded-2xl border bg-card transition-colors hover:border-primary">
+          <div class="w-full px-8 py-6">
+            <h3 class="text-balance text-xl font-bold text-foreground">
+              {title}
+            </h3>
+            <div class="mt-4 flex flex-col">
+              <ul class="mb-2 flex flex-row gap-x-2">
+                {tags.map((tag) => (
+                  <li>
+                    <span
+                      class={`flex items-center gap-x-2 rounded-full text-xs ${tag.class} px-2 py-1 `}
+                    >
+                      <tag.icon class="size-4" />
+                      {tag.name}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <div class="mt-2 text-pretty text-muted-foreground">
+                {description}
+              </div>
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
