@@ -1,3 +1,17 @@
+---
+import { AtSign, Github, Twitter, Linkedin } from "lucide-astro";
+const SOCIAL_MEDIA = [
+  { name: "Github", href: "https://github.com/bjohansebas", icon: Github },
+  { name: "Twitter", href: "https://twitter.com/bjohansebas", icon: Twitter },
+  {
+    name: "Linkedin",
+    href: "https://www.linkedin.com/in/bjohansebas/",
+    icon: Linkedin,
+  },
+  { name: "Contact", href: "mailto:bjohansebas@gmail.com", icon: AtSign },
+];
+---
+
 <header class="mx-auto flex max-w-4xl flex-col gap-4">
   <h1 class="text-balance text-3xl font-bold tracking-wide">
     👋 Hey, I'm Sebastian
@@ -8,4 +22,17 @@
       class="font-semibold text-primary">open-source</span
     > projects.
   </h2>
+  <div class="mt-2 flex gap-3">
+    {
+      SOCIAL_MEDIA.map(({ name, href, ...social }) => (
+        <a
+          title={name}
+          href={href}
+          class="flex items-center gap-2 rounded-md border bg-card px-2 py-2 text-sm text-muted-foreground transition-all hover:border-primary hover:text-card-foreground"
+        >
+          {<social.icon class="size-4 text-inherit" />}
+        </a>
+      ))
+    }
+  </div>
 </header>
