@@ -1,5 +1,6 @@
 ---
 import { AtSign, Github, Twitter, Linkedin } from "lucide-astro";
+
 const SOCIAL_MEDIA = [
   { name: "Github", href: "https://github.com/bjohansebas", icon: Github },
   { name: "Twitter", href: "https://twitter.com/bjohansebas", icon: Twitter },
@@ -12,27 +13,46 @@ const SOCIAL_MEDIA = [
 ];
 ---
 
-<header class="mx-auto flex max-w-4xl flex-col gap-4">
-  <h1 class="text-balance text-3xl font-bold tracking-wide">
-    👋 Hey, I'm Sebastian
-  </h1>
-  <h2 class="text-pretty text-xl text-muted-foreground">
-    <span class="font-semibold text-primary">Full-stack developer</span>,
-    specializing in web service development. I love contributing to and building <span
-      class="font-semibold text-primary">open-source</span
-    > projects.
-  </h2>
-  <div class="mt-2 flex gap-3">
-    {
-      SOCIAL_MEDIA.map(({ name, href, ...social }) => (
-        <a
-          title={name}
-          href={href}
-          class="flex items-center gap-2 rounded-md border bg-card px-2 py-2 text-sm text-muted-foreground transition-all hover:border-primary hover:text-card-foreground"
-        >
-          {<social.icon class="size-4 text-inherit" />}
-        </a>
-      ))
-    }
+<header class="mx-auto flex max-w-2xl flex-col gap-4">
+  <div
+    class="flex w-full flex-col space-y-4 md:flex-row md:items-center md:justify-between md:space-y-0"
+  >
+    <div class="flex flex-row items-center space-x-3">
+      <img
+        src="https://avatars.githubusercontent.com/u/103585995?v=4"
+        width={100}
+        height={100}
+        alt="bjohansebas's picture"
+        class="h-[48px] w-[48px] rounded-full border"
+      />
+      <div class="flex flex-col">
+        <h1 class="font-semibold">Sebastian Beltran</h1>
+        <h2 class="text-muted-foreground">Full-stack Developer</h2>
+      </div>
+    </div>
+    <div class="mt-2 flex gap-3">
+      {
+        SOCIAL_MEDIA.map(({ name, href, ...social }) => (
+          <a
+            title={name}
+            href={href}
+            target="_blank"
+            class="flex items-center gap-2 rounded-md border bg-card px-2 py-2 text-sm text-muted-foreground transition-all hover:border-primary hover:text-card-foreground"
+          >
+            {<social.icon class="size-4 text-inherit" />}
+          </a>
+        ))
+      }
+    </div>
   </div>
+  <h2 class="mt-2 text-balance text-lg font-bold">About me</h2>
+  <p class="text-pretty text-muted-foreground">
+    Hi! I'm Sebastian, a <span class="font-semibold text-primary"
+      >Full-stack developer</span
+    > with experience in web application development. I'm passionate about contributing
+    to and building <span class="font-semibold text-primary"
+      >open-source projects</span
+    >. I love exploring new technologies and finding creative solutions to
+    development challenges.
+  </p>
 </header>
