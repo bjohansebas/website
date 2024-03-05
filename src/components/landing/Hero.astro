@@ -34,12 +34,17 @@ const SOCIAL_MEDIA = [
       {
         SOCIAL_MEDIA.map(({ name, href, ...social }) => (
           <a
-            title={name}
+            aria-label={`Go to ${name}`}
             href={href}
             target="_blank"
             class="flex items-center gap-2 rounded-md border bg-card px-2 py-2 text-sm text-muted-foreground transition-all hover:border-primary hover:text-card-foreground"
           >
-            {<social.icon class="size-4 text-inherit" />}
+            {
+              <social.icon
+                class="size-4 text-inherit"
+                aria-label={`${name} icon`}
+              />
+            }
           </a>
         ))
       }
