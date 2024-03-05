@@ -1,5 +1,5 @@
 ---
-import { AtSign, Github, Twitter, Linkedin } from "lucide-astro";
+import { AtSign, Github, Twitter, Linkedin, Contact2 } from "lucide-astro";
 
 const SOCIAL_MEDIA = [
   { name: "Github", href: "https://github.com/bjohansebas", icon: Github },
@@ -45,7 +45,9 @@ const SOCIAL_MEDIA = [
       }
     </div>
   </div>
-  <h2 class="mt-2 text-balance text-lg font-bold">About me</h2>
+  <h2 class="mt-2 flex items-center gap-x-2 text-balance text-lg font-semibold">
+    <Contact2 class="size-5" />About me
+  </h2>
   <p class="text-pretty text-muted-foreground">
     Hi! I'm Sebastian, a <span class="font-semibold text-primary"
       >Full-stack developer</span
