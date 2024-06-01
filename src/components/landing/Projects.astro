@@ -3,6 +3,7 @@ import NextJS from "@/components/icons/NextJS.astro";
 import Tailwind from "@/components/icons/Tailwind.astro";
 import CodeIcon from "@/components/icons/Code.astro";
 import { Construction, Link, Github } from "lucide-astro";
+import { Image } from "astro:assets";
 
 const TAGS = {
   NEXT: {
@@ -44,7 +45,7 @@ const PROJECTS = [
 ];
 ---
 
-<section class="mx-auto flex max-w-2xl flex-col">
+<section class="mx-auto flex max-w-xl flex-col">
   <header>
     <h2
       class="mb-5 flex items-center gap-x-2 text-lg font-semibold text-foreground"
@@ -52,18 +53,20 @@ const PROJECTS = [
       <CodeIcon class="size-5" />Projects
     </h2>
   </header>
-  <div class="grid grid-cols-[repeat(auto-fit_,minmax(320px,1fr))] gap-4">
+  <div class="flex flex-col gap-4">
     <!-- <div class="flex flex-col gap-4"> -->
     {
-      PROJECTS.map(({ title, tags, description, logo, link, github }) => (
+      PROJECTS.map(({ title, tags, description, logo, link, github }, i) => (
         <article class="w-full rounded-2xl border bg-card px-6 py-6 transition-colors hover:border-primary">
-          <header class="flex items-start space-x-3">
-            <img
+          <header class="flex items-center space-x-3">
+            <Image
               src={logo}
               alt={`${title.split(" ")[0]} logo`}
               width={100}
-              class="mt-2 h-[24px] w-[24px]"
+              class="h-[24px] w-[24px]"
               height={100}
+              decoding="async"
+              loading={i === 0 ? "eager" : "lazy"}
             />
             <h3 class="text-balance text-lg font-semibold text-foreground">
               {title}

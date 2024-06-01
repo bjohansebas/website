@@ -25,9 +25,11 @@ const descriptionPage = "";
     <meta name="googlebot" content="index, follow" />
   </head>
   <body>
-    <div
-      class="absolute top-0 z-[-2] h-screen w-screen bg-background bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
-    >
+    <div class="fixed left-0 top-0 -z-10 h-full w-full">
+      <div
+        class="absolute top-0 z-[-2] h-screen w-screen bg-background bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(182,198,198,0.3),rgba(255,255,255,0))]"
+      >
+      </div>
     </div>
     <div class="px-4 pb-5 pt-16 lg:px-10">
       <slot />
@@ -37,7 +39,7 @@ const descriptionPage = "";
 
 <style is:global>
   :root {
-    --background: hsl(198, 65%, 3.36%);
+    --background: #030b0e;
     --foreground: hsl(198, 10%, 97.1%);
     --card: hsl(198, 45%, 5.46%);
     --card-foreground: hsl(198, 10%, 97.1%);
@@ -48,7 +50,7 @@ const descriptionPage = "";
     --secondary: hsl(198, 50%, 12.6%);
     --secondary-foreground: hsl(198, 10%, 97.1%);
     --muted: hsl(198, 50%, 12.6%);
-    --muted-foreground: hsl(196.4, 6.1%, 64.5%);
+    --muted-foreground: hsl(193.8, 18.8%, 86.5%);
     --accent: hsl(198, 50%, 12.6%);
     --accent-foreground: hsl(198, 10%, 97.1%);
     --destructive: hsl(0, 84.2%, 60.2%);

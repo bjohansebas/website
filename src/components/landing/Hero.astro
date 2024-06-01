@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { AtSign, Github, Twitter, Linkedin, Contact2 } from "lucide-astro";
 
 const SOCIAL_MEDIA = [
@@ -13,17 +14,19 @@ const SOCIAL_MEDIA = [
 ];
 ---
 
-<header class="mx-auto flex max-w-2xl flex-col gap-4">
+<header class="mx-auto flex max-w-xl flex-col gap-4">
   <div
     class="flex w-full flex-col space-y-4 md:flex-row md:items-center md:justify-between md:space-y-0"
   >
     <div class="flex flex-row items-center space-x-3">
-      <img
+      <Image
         src="https://avatars.githubusercontent.com/u/103585995?v=4"
         width={100}
         height={100}
         alt="Sebastian Beltran"
         class="h-[48px] w-[48px] rounded-full border"
+        decoding="async"
+        loading="eager"
       />
       <div class="flex flex-col">
         <h1 class="font-semibold">Sebastian Beltran</h1>
