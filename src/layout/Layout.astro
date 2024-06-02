@@ -5,20 +5,20 @@ import "@fontsource/geist-sans/700.css";
 
 interface Props {
   title: string;
+  description: string;
+  lang?: string;
 }
 
-const { title } = Astro.props;
-const descriptionPage = "";
+const { title, lang, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang ?? "en-US"}>
   <head>
     <title>{title}</title>
 
     <meta charset="UTF-8" />
-    <meta name="description" content={descriptionPage} />
-
+    <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="robots" content="index, follow" />
