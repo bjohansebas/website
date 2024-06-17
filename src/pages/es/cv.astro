@@ -1,0 +1,31 @@
+---
+import Layout from "@/layout/layout-cv.astro";
+
+import About from "@/components/sections/About.astro";
+import Education from "@/components/sections/Education.astro";
+// import Experience from "@/components/sections/Experience.astro"
+import Hero from "@/components/sections/Hero.astro";
+import Projects from "@/components/sections/Projects.astro";
+import Skills from "@/components/sections/Skills.astro";
+import KeyboardManager from "@/components/KeyboardManager.astro";
+
+import { basics } from "@cv/es.json";
+import Languages from "@/components/sections/Languages.astro";
+const { name, label } = basics;
+---
+
+<Layout title={`Portafolio de ${name} - ${label}`}>
+  <main class="mx-auto w-full max-w-3xl p-16 max-[700px]:p-8">
+    <Hero />
+    <About />
+    <!-- <Experience /> -->
+    <Education />
+    <Projects />
+    <div class="grid grid-cols-3 gap-2">
+      <Languages />
+      <Skills class="col-span-2" />
+    </div>
+  </main>
+
+  <KeyboardManager />
+</Layout>

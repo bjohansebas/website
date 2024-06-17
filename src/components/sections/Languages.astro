@@ -1,0 +1,17 @@
+---
+import Section from "../Section.astro";
+
+import { languages } from "@cv/es.json";
+---
+
+<Section title="Idiomas">
+  <ul class="flex flex-col gap-1">
+    {
+      languages.map(({ language, fluency }) => (
+        <li class="text-sm">
+          {language}: {fluency}
+        </li>
+      ))
+    }
+  </ul>
+</Section>

@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@cv/*": ["./src/lib/cv/*"],
       "@/*": ["./src/*"]
     }
   }

@@ -1,0 +1,106 @@
+---
+import { basics } from "@cv/es.json";
+import Section from "@/components/Section.astro";
+import Mail from "@/icons/Mail.astro";
+import X from "@/icons/X.astro";
+import LinkedIn from "@/icons/LinkedIn.astro";
+import GitHub from "@/icons/GitHub.astro";
+import WorldMap from "@/icons/WorldMap.astro";
+import type { SocialIcon } from "@/types";
+
+const { name, label, location, profiles, email } = basics;
+const { city, region } = location;
+
+const SOCIAL_ICONS: SocialIcon = {
+  GitHub,
+  LinkedIn,
+  X,
+};
+
+const linkedInfo = profiles.find(({ network }) => network === "LinkedIn");
+const linkedUrl = linkedInfo?.url;
+
+const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
+---
+
+<Section>
+  <div class="flex flex-col-reverse items-center justify-between gap-4">
+    <div class="flex flex-col items-center justify-center gap-2 text-center">
+      <h1 class="text-2xl font-semibold">{name}</h1>
+      <h2 class="text-balance text-lg font-medium">{label}</h2>
+      <span class="flex items-center gap-1 text-sm">
+        <WorldMap />
+        {city}, {region}
+      </span>
+      <footer class="print">
+        {printInfo}
+      </footer>
+      <footer class="no-print">
+        {
+          email && (
+            <a
+              href={`mailto:${email}`}
+              title={`Enviar un correo electrónico a ${name} al correo ${email}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Mail />
+            </a>
+          )
+        }
+        {
+          profiles.map(({ network, url, username }) => {
+            const Icon = SOCIAL_ICONS[network];
+
+            return (
+              <a
+                href={url}
+                title={`Visitar el perfil de ${name} en ${network}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon />
+              </a>
+            );
+          })
+        }
+      </footer>
+    </div>
+  </div>
+</Section>
+
+<style>
+  h2 {
+    color: #444;
+  }
+
+  span {
+    color: #666;
+  }
+
+  footer {
+    color: #555;
+    font-size: 0.65rem;
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+  }
+
+  footer a {
+    color: #777;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eee;
+    padding: 4px;
+    height: 32px;
+    width: 32px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+
+  footer a:hover {
+    background: #eee;
+    border: 1px solid #ddd;
+  }
+</style>

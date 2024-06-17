@@ -1,0 +1,77 @@
+{
+  "basics": {
+    "email": "bjohansebas@gmail.com",
+    "label": "Desarrollador Full Stack",
+    "location": {
+      "city": "Cundinamarca",
+      "countryCode": "CO",
+      "region": "Colombia"
+    },
+    "name": "Sebastian Beltran",
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "url": "https://linkedin.com/in/bjohansebas",
+        "username": "bjohansebas"
+      },
+      {
+        "network": "X",
+        "url": "https://x.com/bjohansebas",
+        "username": "bjohansebas"
+      },
+      {
+        "network": "GitHub",
+        "url": "https://github.com/bjohansebas",
+        "username": "bjohansebas"
+      }
+    ],
+    "summary": "Como desarrollador full stack, soy capaz de crear nuevos productos desde cero y mantenerlos siguiendo las mejores prácticas. Principalmente trabajo con TypeScript, React, Next.js y Supabase.",
+    "url": "https://dub.sh/bjohansebas"
+  },
+  "education": [
+    {
+      "area": "Full Stack Developer con JavaScript",
+      "endDate": "2022-06-01",
+      "startDate": null,
+      "institution": "Platzi",
+      "studyType": "Bachelor",
+      "url": "https://platzi.com"
+    }
+  ],
+  "languages": [
+    {
+      "fluency": "Nativo",
+      "language": "Español"
+    },
+    {
+      "fluency": "B1",
+      "language": "Ingles"
+    }
+  ],
+  "projects": [
+    {
+      "description": "Una herramienta de diario diseñada específicamente para el autodescubrimiento consciente, el bienestar mejorado y el logro de metas.",
+      "highlights": [
+        "Mindfulness",
+        "Side Project",
+        "Open Source",
+        "JavaScript & TypeScript"
+      ],
+      "isActive": true,
+      "name": "Mindfulyze",
+      "url": "https://mindfulyze.com",
+      "github": "https://git.new/mindfulyze"
+    }
+  ],
+  "skills": [
+    "HTML",
+    "JavaScript",
+    "Tailwind",
+    "TypeScript",
+    "Node",
+    "Git",
+    "Next.js",
+    "React"
+  ],
+  "work": []
+}
