@@ -8,8 +8,9 @@ import { languages } from "@cv/es.json";
   <ul class="flex flex-col gap-1">
     {
       languages.map(({ language, fluency }) => (
-        <li class="text-sm">
-          {language}: {fluency}
+        <li class="">
+          <span class="font-semibold">{language}:</span>
+          {fluency}
         </li>
       ))
     }

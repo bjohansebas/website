@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@cv/*": ["./src/lib/cv/*"],
+      "@ui/*": ["./src/components/*"],
       "@/*": ["./src/*"]
     }
   }

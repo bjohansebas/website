@@ -1,5 +1,5 @@
 ---
-import Layout from "@/layout/layout-cv.astro";
+import Layout from "@/layout/Layout.astro";
 
 import About from "@/components/sections/About.astro";
 import Education from "@/components/sections/Education.astro";
@@ -14,8 +14,8 @@ import Languages from "@/components/sections/Languages.astro";
 const { name, label } = basics;
 ---
 
-<Layout title={`Portafolio de ${name} - ${label}`}>
-  <main class="mx-auto w-full max-w-3xl p-16 max-[700px]:p-8">
+<Layout title={`Portafolio de ${name} - ${label}`} description="" class="pt-0">
+  <main class="mx-auto w-full max-w-3xl p-16 pt-0 max-[700px]:p-8">
     <Hero />
     <About />
     <!-- <Experience /> -->

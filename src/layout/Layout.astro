@@ -1,4 +1,5 @@
 ---
+import { getLangFromUrl } from "@/i18n/utils";
 import "@fontsource/geist-sans/400.css";
 import "@fontsource/geist-sans/600.css";
 import "@fontsource/geist-sans/700.css";
@@ -6,73 +7,137 @@ import "@fontsource/geist-sans/700.css";
 interface Props {
   title: string;
   description: string;
-  lang?: string;
+  class?: string;
 }
 
-const { title, lang, description } = Astro.props;
+const { title, description, class: className } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const url = Astro.url.origin;
 ---
 
 <!doctype html>
-<html lang={lang ?? "en-US"}>
+<html lang={lang}>
   <head>
     <title>{title}</title>
 
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
     <meta name="viewport" content="width=device-width" />
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow" />
+
+    <meta property="og:url" content={url} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content={url.split("//")[1] ?? ""} />
+    <meta property="twitter:url" content={url} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="" />
   </head>
-  <body>
-    <div class="fixed left-0 top-0 -z-10 h-full w-full">
-      <div
-        class="absolute top-0 z-[-2] h-screen w-screen bg-background bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(182,198,198,0.3),rgba(255,255,255,0))]"
-      >
-      </div>
+  <body class="dark">
+    <div
+      class="absolute top-0 z-[-2] h-screen w-screen bg-background bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(182,198,198,0.3),rgba(255,255,255,0))]"
+    >
     </div>
-    <div class="px-4 pb-5 pt-16 lg:px-10">
+    <div class:list={["px-4 pb-5 pt-16 lg:px-10 print:p-0", className]}>
       <slot />
     </div>
   </body>
+
+  <style is:global>
+    :root {
+      --gradient: #16222a;
+      --background: 0 0% 100%;
+      --foreground: 217 3.1% 0.52%;
+      --muted: 60 4.8% 95.9%;
+      --muted-foreground: 210, 1.2%, 32.9%;
+      --popover: 217 65.2% 91.3%;
+      --popover-foreground: 217 3.1% 0.65%;
+      --card: 0 0% 100%;
+      --card-foreground: 20 14.3% 4.1%;
+      --border: 20 5.9% 90%;
+      --input: 220 15% 90%;
+      --primary: 198, 100%, 42%;
+      --primary-foreground: 198, 9.1%, 5.300000000000001%;
+      --secondary: 198, 50%, 12.6%;
+      --secondary-foreground: 198, 10%, 97.1%;
+      --accent: 217 1.55% 95.65%;
+      --accent-foreground: 217 2.86% 11.3%;
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 0 0% 98%;
+      --ring: 217 31% 13%;
+      --radius: 0.75rem;
+    }
+
+    .dark {
+      --background: 196, 65%, 3%;
+      --foreground: 198, 10%, 97.1%;
+      --card: 198, 45%, 5.46%;
+      --card-foreground: 198, 10%, 97.1%;
+      --popover: 198, 45%, 5.46%;
+      --popover-foreground: 198, 10%, 97.1%;
+      --primary: 198, 100%, 42%;
+      --primary-foreground: 198, 9.1%, 5.300000000000001%;
+      --secondary: 198, 50%, 12.6%;
+      --secondary-foreground: 198, 10%, 97.1%;
+      --muted: 198, 50%, 12.6%;
+      --muted-foreground: 193.8, 18.8%, 86.5%;
+      --accent: 198, 50%, 12.6%;
+      --accent-foreground: 198, 10%, 97.1%;
+      --destructive: 0, 84.2%, 60.2%;
+      --destructive-foreground: 0, 0%, 98%;
+      --border: 198, 50%, 12.6%;
+      --input: 198 50% 12.6%;
+      --ring: 198 100% 42%;
+    }
+
+    * {
+      @apply border-border;
+    }
+
+    body {
+      @apply bg-background text-foreground;
+    }
+
+    html {
+      font-family: "Geist Sans", system-ui, sans-serif;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      overscroll-behavior: none;
+    }
+
+    p {
+      @apply text-pretty;
+    }
+
+    .print {
+      display: none !important;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+
+      .print {
+        display: block !important;
+      }
+
+      astro-dev-toolbar {
+        display: none !important;
+      }
+
+      article {
+        break-inside: avoid;
+      }
+    }
+  </style>
 </html>
-
-<style is:global>
-  :root {
-    --background: #030b0e;
-    --foreground: hsl(198, 10%, 97.1%);
-    --card: hsl(198, 45%, 5.46%);
-    --card-foreground: hsl(198, 10%, 97.1%);
-    --popover: hsl(198, 45%, 5.46%);
-    --popover-foreground: hsl(198, 10%, 97.1%);
-    --primary: hsl(198, 100%, 42%);
-    --primary-foreground: hsl(198, 9.1%, 5.300000000000001%);
-    --secondary: hsl(198, 50%, 12.6%);
-    --secondary-foreground: hsl(198, 10%, 97.1%);
-    --muted: hsl(198, 50%, 12.6%);
-    --muted-foreground: hsl(193.8, 18.8%, 86.5%);
-    --accent: hsl(198, 50%, 12.6%);
-    --accent-foreground: hsl(198, 10%, 97.1%);
-    --destructive: hsl(0, 84.2%, 60.2%);
-    --destructive-foreground: hsl(0, 0%, 98%);
-    --border: hsl(198, 50%, 12.6%);
-    --input: hsl(198 50% 12.6%);
-    --ring: hsl(198 100% 42%);
-    --radius: 0.75rem;
-  }
-
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
-
-  html {
-    font-family: "Geist Sans", system-ui, sans-serif;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-    overscroll-behavior: none;
-  }
-</style>

@@ -1,5 +1,5 @@
 ---
-import GitHub from "@/icons/GitHub.astro";
+import { Github } from "lucide-astro";
 import Section from "../Section.astro";
 
 import { projects } from "@cv/es.json";
@@ -11,9 +11,9 @@ import { projects } from "@cv/es.json";
       projects.map(
         ({ url, description, highlights, name, isActive, github }) => {
           return (
-            <li>
-              <article class="flex h-full flex-col rounded-lg p-4">
-                <header class="mb-1 flex items-center gap-1">
+            <li class="">
+              <article class="flex h-full flex-col rounded-lg border border-solid border-border bg-card/70 p-4">
+                <header class="mb-1 flex items-center gap-2">
                   <h3 class="flex items-center gap-1">
                     <a
                       href={url}
@@ -35,15 +35,15 @@ import { projects } from "@cv/es.json";
                       target="_blank"
                       title={`Ver código fuente del proyecto ${name}`}
                     >
-                      <GitHub />
+                      <Github class="size-4" />
                     </a>
                   )}
                 </header>
-                <p class="mb-4 text-xs">{description}</p>
+                <p class="mb-4 text-xs text-muted-foreground">{description}</p>
                 <footer class="flex flex-wrap gap-1 text-xs">
                   {highlights.map((highlight) => {
                     return (
-                      <span class="rounded-md text-xs font-medium">
+                      <span class="rounded-md bg-muted text-xs font-medium text-muted-foreground">
                         {highlight}
                       </span>
                     );
@@ -63,30 +63,17 @@ import { projects } from "@cv/es.json";
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 
-  article {
-    border: 1px solid #f2f2f2;
-  }
-
   article a:hover {
     text-decoration: underline;
   }
 
   footer span {
-    background: #eee;
-    color: #444;
-    font-size: 0.6rem;
     padding: 0.2rem 0.6rem;
   }
 
   @media (width <= 700px) {
     ul {
       margin-inline: 0px;
-    }
-
-    article {
-      border: none;
-      box-shadow: 0 1px 1px #f2f2f2;
-      padding: 0 0 16px 0;
     }
   }
 </style>

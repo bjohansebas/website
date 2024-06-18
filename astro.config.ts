@@ -2,17 +2,25 @@ import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
 import sitemap from "@astrojs/sitemap";
+import { defaultLang, languages } from "./src/i18n/utils";
 
 // https://astro.build/config
 export default defineConfig({
+  i18n: {
+    locales: Object.keys(languages),
+    defaultLocale: defaultLang,
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   integrations: [
     tailwind(),
     sitemap({
       i18n: {
-        defaultLocale: "en",
+        defaultLocale: defaultLang,
         locales: {
-          en: "en-US",
-          es: "es-ES",
+          en: "en",
+          es: "es",
         },
       },
     }),

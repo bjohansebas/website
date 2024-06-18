@@ -1,16 +1,15 @@
 ---
 import Section from "../Section.astro";
-import HTML from "@/icons/html.astro";
-import CSS from "@/icons/css.astro";
-import JavaScript from "@/icons/javascript.astro";
-import TypeScript from "@/icons/type.astro";
-import React from "@/icons/react.astro";
-import Node from "@/icons/node.astro";
-import Git from "@/icons/git.astro";
-import GitHub from "@/icons/GitHub.astro";
-import Tailwind from "@/icons/tailwind.astro";
-import Next from "@/icons/next.astro";
+import HTML from "@ui/icons/html.astro";
+import JavaScript from "@ui/icons/javascript.astro";
+import TypeScript from "@ui/icons/typescript.astro";
+import React from "@ui/icons/react.astro";
+import Node from "@ui/icons/node.astro";
+import Git from "@ui/icons/git.astro";
+
 import { skills } from "@cv/es.json";
+import { default as Next } from "@ui/icons/nextjs.astro";
+import Tailwind from "@ui/icons/tailwind.astro";
 
 interface Props {
   class?: string;
@@ -19,15 +18,13 @@ const { class: className } = Astro.props;
 
 const SKILLS_ICONS: Record<string, any> = {
   HTML,
-  CSS,
   JavaScript,
   TypeScript,
   React,
   Node,
-  Git,
-  GitHub,
   Next,
   Tailwind,
+  Git,
 };
 ---
 
@@ -39,8 +36,9 @@ const SKILLS_ICONS: Record<string, any> = {
         const Icon = SKILLS_ICONS[iconName];
 
         return (
-          <li class="flex items-center gap-1 rounded-md bg-slate-200 px-3 py-1 text-sm font-medium">
-            {Icon && <Icon />} <span class="text-xs">{name}</span>
+          <li class="flex items-center gap-1 rounded-md border border-solid bg-muted px-3 py-2 text-sm font-medium text-muted-foreground print:text-gray-700">
+            {Icon && <Icon class="size-5" />}{" "}
+            <span class="text-xs">{name}</span>
           </li>
         );
       })

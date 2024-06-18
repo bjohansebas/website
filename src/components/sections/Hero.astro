@@ -1,11 +1,9 @@
 ---
 import { basics } from "@cv/es.json";
 import Section from "@/components/Section.astro";
-import Mail from "@/icons/Mail.astro";
-import X from "@/icons/X.astro";
-import LinkedIn from "@/icons/LinkedIn.astro";
-import GitHub from "@/icons/GitHub.astro";
-import WorldMap from "@/icons/WorldMap.astro";
+import X from "@ui/icons/x.astro";
+import { Github as GitHub, Linkedin as LinkedIn, Mail } from "lucide-astro";
+import WorldMap from "@ui/icons/world-map.astro";
 import type { SocialIcon } from "@/types";
 
 const { name, label, location, profiles, email } = basics;
@@ -27,8 +25,10 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
   <div class="flex flex-col-reverse items-center justify-between gap-4">
     <div class="flex flex-col items-center justify-center gap-2 text-center">
       <h1 class="text-2xl font-semibold">{name}</h1>
-      <h2 class="text-balance text-lg font-medium">{label}</h2>
-      <span class="flex items-center gap-1 text-sm">
+      <h2 class="text-balance text-lg font-medium text-muted-foreground">
+        {label}
+      </h2>
+      <span class="flex items-center gap-1 text-sm text-muted-foreground">
         <WorldMap />
         {city}, {region}
       </span>
@@ -43,8 +43,9 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
               title={`Enviar un correo electrónico a ${name} al correo ${email}`}
               target="_blank"
               rel="noopener noreferrer"
+              class="border border-solid hover:border-primary hover:bg-card hover:text-primary"
             >
-              <Mail />
+              <Mail class="size-4" />
             </a>
           )
         }
@@ -58,8 +59,9 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
                 title={`Visitar el perfil de ${name} en ${network}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                class="border border-solid hover:border-primary hover:bg-card hover:text-primary"
               >
-                <Icon />
+                <Icon class="size-4" />
               </a>
             );
           })
@@ -70,16 +72,7 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
 </Section>
 
 <style>
-  h2 {
-    color: #444;
-  }
-
-  span {
-    color: #666;
-  }
-
   footer {
-    color: #555;
     font-size: 0.65rem;
     display: flex;
     gap: 4px;
@@ -87,20 +80,13 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
   }
 
   footer a {
-    color: #777;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #eee;
     padding: 4px;
     height: 32px;
     width: 32px;
     border-radius: 6px;
     transition: all 0.3s ease;
-  }
-
-  footer a:hover {
-    background: #eee;
-    border: 1px solid #ddd;
   }
 </style>

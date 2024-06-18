@@ -5,7 +5,7 @@ import { education } from "@cv/es.json";
 ---
 
 <Section title="Educación">
-  <ul>
+  <ul class="flex flex-col gap-8">
     {
       education.map(({ institution, startDate, endDate, area }) => {
         let years;
@@ -21,16 +21,20 @@ import { education } from "@cv/es.json";
         return (
           <li>
             <article>
-              <header>
+              <header class="mb-1 flex items-start justify-between">
                 <div>
-                  <h3>{institution}</h3>
+                  <h3 class="font-semibold text-card-foreground">
+                    {institution}
+                  </h3>
                 </div>
 
-                <time>{years}</time>
+                <time class="min-w-24 text-sm text-muted-foreground">
+                  {years}
+                </time>
               </header>
 
               <footer>
-                <p>{area}</p>
+                <p class="text-muted-foreground">{area}</p>
               </footer>
             </article>
           </li>
@@ -41,30 +45,6 @@ import { education } from "@cv/es.json";
 </Section>
 
 <style>
-  ul {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
-
-  article h3 {
-    font-weight: 500;
-    color: #111;
-  }
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 4px;
-  }
-
-  time {
-    color: #555;
-    font-size: 0.85rem;
-    min-width: 102px;
-  }
-
   @media (width <= 700px) {
     time {
       text-align: right;
