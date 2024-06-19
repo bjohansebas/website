@@ -1,13 +1,15 @@
 {
   "basics": {
+    "name": "Sebastian Beltran",
+    "label": "Full Stack Developer",
     "email": "bjohansebas@gmail.com",
-    "label": "Desarrollador Full Stack",
+    "url": "https://dub.sh/bjohansebas",
+    "summary": "As a full stack developer, I am capable of creating new products from scratch and maintaining them with best practices. I work mostly with TypeScript, React, Next.js, and Supabase.",
     "location": {
       "city": "Cundinamarca",
       "countryCode": "CO",
       "region": "Colombia"
     },
-    "name": "Sebastian Beltran",
     "profiles": [
       {
         "network": "LinkedIn",
@@ -24,43 +26,17 @@
         "url": "https://github.com/bjohansebas",
         "username": "bjohansebas"
       }
-    ],
-    "summary": "Como desarrollador full stack, soy capaz de crear nuevos productos desde cero y mantenerlos siguiendo las mejores prácticas. Principalmente trabajo con TypeScript, React, Next.js y Supabase.",
-    "url": "https://dub.sh/bjohansebas"
+    ]
   },
+  "work": [],
   "education": [
     {
-      "area": "Full Stack Developer con JavaScript",
-      "endDate": "2022-06-01",
-      "startDate": null,
       "institution": "Platzi",
+      "url": "https://platzi.com",
+      "area": "Full Stack Developer with JavaScript",
       "studyType": "Bachelor",
-      "url": "https://platzi.com"
-    }
-  ],
-  "languages": [
-    {
-      "fluency": "Nativo",
-      "language": "Español"
-    },
-    {
-      "fluency": "B1",
-      "language": "Ingles"
-    }
-  ],
-  "projects": [
-    {
-      "description": "Una herramienta de diario diseñada específicamente para el autodescubrimiento consciente, el bienestar mejorado y el logro de metas.",
-      "highlights": [
-        "Mindfulness",
-        "Side Project",
-        "Open Source",
-        "JavaScript & TypeScript"
-      ],
-      "isActive": true,
-      "name": "Mindfulyze",
-      "url": "https://mindfulyze.com",
-      "github": "https://git.new/mindfulyze"
+      "startDate": null,
+      "endDate": "2022-06-01"
     }
   ],
   "skills": [
@@ -73,5 +49,29 @@
     "Next.js",
     "React"
   ],
-  "work": []
+  "languages": [
+    {
+      "fluency": "Native",
+      "language": "Spanish"
+    },
+    {
+      "fluency": "B1",
+      "language": "English"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Mindfulyze",
+      "isActive": true,
+      "description": "A purpose-built journaling tool for mindful self-discovery, enhanced well-being, and goal achievement.",
+      "highlights": [
+        "Mindfulness",
+        "Side Project",
+        "Open Source",
+        "JavaScript & TypeScript"
+      ],
+      "url": "https://mindfulyze.com",
+      "github": "https://git.new/mindfulyze"
+    }
+  ]
 }

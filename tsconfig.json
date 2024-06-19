@@ -6,6 +6,7 @@
       "@cv/*": ["./src/lib/cv/*"],
       "@ui/*": ["./src/components/*"],
       "@/*": ["./src/*"]
-    }
+    },
+    "noImplicitAny": false
   }
 }

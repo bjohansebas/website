@@ -1,48 +1,56 @@
 ---
-import Section from "../Section.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import type { CollectionEntry } from "astro:content";
 
-import { education } from "@cv/es.json";
+type Props = {
+  education: CollectionEntry<"cv">["data"]["education"];
+};
+
+const { education } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<Section title="Educación">
-  <ul class="flex flex-col gap-8">
-    {
-      education.map(({ institution, startDate, endDate, area }) => {
-        let years;
-        if (startDate == null) {
-          const formatter = new Intl.DateTimeFormat("en", { month: "short" });
-          years = `${formatter.format(new Date(endDate))} ${new Date(endDate).getFullYear()}`;
-        } else {
-          const startYear = new Date(startDate).getFullYear();
-          const endYear =
-            endDate != null ? new Date(endDate).getFullYear() : "Actual";
-          years = `${startYear} - ${endYear}`;
-        }
-        return (
-          <li>
-            <article>
-              <header class="mb-1 flex items-start justify-between">
-                <div>
-                  <h3 class="font-semibold text-card-foreground">
-                    {institution}
-                  </h3>
-                </div>
+<ul class="flex flex-col gap-8">
+  {
+    education.map(({ institution, startDate, endDate, area }) => {
+      let years;
+      if (startDate == null) {
+        const formatter = new Intl.DateTimeFormat(lang, { month: "long" });
+        years = `${formatter.format(new Date(endDate))} ${new Date(endDate).getFullYear()}`;
+      } else {
+        const startYear = new Date(startDate).getFullYear();
+        const endYear =
+          endDate != null
+            ? new Date(endDate).getFullYear()
+            : t("common.present");
+        years = `${startYear} - ${endYear}`;
+      }
 
-                <time class="min-w-24 text-sm text-muted-foreground">
-                  {years}
-                </time>
-              </header>
+      return (
+        <li>
+          <article>
+            <header class="mb-1 flex items-start justify-between">
+              <div>
+                <h3 class="font-semibold text-card-foreground">
+                  {institution}
+                </h3>
+              </div>
 
-              <footer>
-                <p class="text-muted-foreground">{area}</p>
-              </footer>
-            </article>
-          </li>
-        );
-      })
-    }
-  </ul>
-</Section>
+              <time class="min-w-24 text-sm text-muted-foreground">
+                {years}
+              </time>
+            </header>
+
+            <footer>
+              <p class="text-muted-foreground">{area}</p>
+            </footer>
+          </article>
+        </li>
+      );
+    })
+  }
+</ul>
 
 <style>
   @media (width <= 700px) {

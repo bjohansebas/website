@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
 import sitemap from "@astrojs/sitemap";
-import { defaultLang, languages } from "./src/i18n/utils";
+import { defaultLang, languages, showDefaultLang } from "./src/i18n/utils";
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,10 +10,11 @@ export default defineConfig({
     locales: Object.keys(languages),
     defaultLocale: defaultLang,
     routing: {
-      prefixDefaultLocale: false,
+      prefixDefaultLocale: showDefaultLang,
     },
   },
   integrations: [
+    //@ts-ignore
     tailwind(),
     sitemap({
       i18n: {
@@ -30,6 +31,7 @@ export default defineConfig({
   },
   prefetch: true,
   output: "hybrid",
+  //@ts-ignore
   adapter: vercel({
     webAnalytics: {
       enabled: true,

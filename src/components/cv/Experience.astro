@@ -1,53 +1,62 @@
 ---
-import Section from "../Section.astro";
+import type { CollectionEntry } from "astro:content";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
-import { work } from "@cv/es.json";
+type Props = {
+  work: CollectionEntry<"cv">["data"]["work"];
+};
+
+const { work } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<Section title="Experiencia laboral">
-  <ul>
-    {
-      work.map(
-        ({ name, startDate, endDate, position, summary, highlights, url }) => {
-          const startYear = new Date(startDate).getFullYear();
-          const endYear =
-            endDate != null ? new Date(endDate).getFullYear() : "Actual";
+<ul>
+  {
+    work.map(
+      ({ name, startDate, endDate, position, summary, highlights, url }) => {
+        const startYear = new Date(startDate).getFullYear();
+        const endYear =
+          endDate != null
+            ? new Date(endDate).getFullYear()
+            : t("common.present");
+        const years = `${startYear} - ${endYear}`;
 
-          return (
-            <li>
-              <article>
-                <header>
-                  <div>
-                    <h3>
-                      <a href={url} title={`Ver ${name}`} target="_blank">
-                        {name}
-                      </a>
-                    </h3>
-                    <h4>{position}</h4>
-                  </div>
+        return (
+          <li>
+            <article>
+              <header>
+                <div>
+                  <h3>
+                    <a href={url} title={`Ver ${name}`} target="_blank">
+                      {name}
+                    </a>
+                  </h3>
+                  <h4>{position}</h4>
+                </div>
 
-                  <div>
-                    <time datetime={startDate} data-title={startDate}>
-                      {startYear}
-                    </time>
-                    {" - "}
-                    <time datetime={endDate} data-title={endDate}>
-                      {endYear}
-                    </time>
-                  </div>
-                </header>
+                <div>
+                  <time datetime={startDate} data-title={startDate}>
+                    {startYear}
+                  </time>
+                  {" - "}
+                  <time datetime={endDate} data-title={endDate}>
+                    {endYear}
+                  </time>
+                </div>
+              </header>
 
-                <footer>
-                  <p>{summary}</p>
-                </footer>
-              </article>
-            </li>
-          );
-        },
-      )
-    }
-  </ul>
-</Section>
+              <footer>
+                <p>{summary}</p>
+              </footer>
+            </article>
+          </li>
+        );
+      },
+    )
+  }
+</ul>
 
 <style>
   ul {

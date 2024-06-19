@@ -1,0 +1,74 @@
+---
+import Layout from "@/layouts/main.astro";
+
+import About from "@ui/cv/About.astro";
+import Education from "@ui/cv/Education.astro";
+// import Experience from "@ui/cv/Experience.astro"
+import Hero from "@ui/cv/Hero.astro";
+import Projects from "@ui/cv/Projects.astro";
+import Skills from "@ui/cv/Skills.astro";
+import KeyboardManager from "@/components/KeyboardManager.astro";
+
+import Languages from "@ui/cv/Languages.astro";
+import { getCollection } from "astro:content";
+import { defaultLang, showDefaultLang } from "@/i18n/utils";
+import type { GetStaticPaths } from "astro";
+import { useTranslations } from "@/i18n/utils";
+import Section from "@ui/Section.astro";
+
+export const getStaticPaths = (async () => {
+  const pages = await getCollection("cv");
+
+  const paths = pages.map((page) => {
+    const [lang] = page.id.split("/");
+    const realPath =
+      defaultLang === lang && !showDefaultLang
+        ? undefined
+        : page.id.includes("index")
+          ? lang
+          : page.id;
+
+    return { params: { lang: realPath }, props: page.data };
+  });
+
+  return paths;
+}) satisfies GetStaticPaths;
+
+const { basics, education, projects, skills, languages } = Astro.props;
+const { name, label, summary } = basics;
+
+const t = useTranslations(
+  (Astro.currentLocale ?? defaultLang) as typeof defaultLang,
+);
+---
+
+<Layout
+  title={t("cv.title", { name, label })}
+  description={summary}
+  class="pt-0"
+>
+  <main class="mx-auto w-full max-w-3xl p-16 pt-0 max-[700px]:p-8">
+    <Section>
+      <Hero basics={basics} />
+    </Section>
+    <Section title={t("cv.about")}>
+      <About summary={summary} />
+    </Section>
+    <!-- <Section title={t("cv.experience")}>
+      <Experience work={work} />
+    </Section> -->
+    <Section title={t("cv.education")}
+      ><Education education={education} /></Section
+    >
+    <Section title={t("cv.projects")}><Projects projects={projects} /></Section>
+    <div class="grid grid-cols-3 gap-2">
+      <Section title={t("cv.skills")}>
+        <Languages languages={languages} />
+      </Section>
+      <Section title={t("cv.skills")} class="col-span-2"
+        ><Skills skills={skills} /></Section
+      >
+    </div>
+  </main>
+  <KeyboardManager basics={basics} />
+</Layout>

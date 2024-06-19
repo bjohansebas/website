@@ -1,12 +1,13 @@
 ---
-import Section from "../Section.astro";
+import type { CollectionEntry } from "astro:content";
 
-import { basics } from "@cv/es.json";
-const { summary } = basics;
+type Props = {
+  summary: CollectionEntry<"cv">["data"]["basics"]["summary"];
+};
+
+const { summary } = Astro.props;
 ---
 
-<Section title="Sobre mí">
-  <p class="text-muted-foreground">
-    {summary}
-  </p>
-</Section>
+<p class="text-muted-foreground">
+  {summary}
+</p>
