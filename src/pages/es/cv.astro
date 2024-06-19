@@ -1,16 +1,16 @@
 ---
-import Layout from "@/layout/Layout.astro";
+import Layout from "@/layouts/main.astro";
 
-import About from "@/components/sections/About.astro";
-import Education from "@/components/sections/Education.astro";
-// import Experience from "@/components/sections/Experience.astro"
-import Hero from "@/components/sections/Hero.astro";
-import Projects from "@/components/sections/Projects.astro";
-import Skills from "@/components/sections/Skills.astro";
+import About from "@ui/cv/About.astro";
+import Education from "@ui/cv/Education.astro";
+// import Experience from "@ui/cv/Experience.astro"
+import Hero from "@ui/cv/Hero.astro";
+import Projects from "@ui/cv/Projects.astro";
+import Skills from "@ui/cv/Skills.astro";
 import KeyboardManager from "@/components/KeyboardManager.astro";
 
 import { basics } from "@cv/es.json";
-import Languages from "@/components/sections/Languages.astro";
+import Languages from "@ui/cv/Languages.astro";
 const { name, label } = basics;
 ---
 
