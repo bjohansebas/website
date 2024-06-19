@@ -1,7 +1,7 @@
-import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
-import sitemap from "@astrojs/sitemap";
+import { defineConfig } from "astro/config";
 import { defaultLang, languages, showDefaultLang } from "./src/i18n/utils";
 
 // https://astro.build/config
