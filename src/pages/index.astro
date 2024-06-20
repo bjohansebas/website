@@ -2,6 +2,12 @@
 import Layout from "@/layouts/main.astro";
 import Hero from "@/components/landing/Hero.astro";
 import Projects from "@/components/landing/Projects.astro";
+import Contact from "@ui/landing/Contact.astro";
+import { Github } from "lucide-astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Layout
@@ -9,7 +15,20 @@ import Projects from "@/components/landing/Projects.astro";
   description="Hi! I'm Sebastian, a Full-stack developer with experience in web application development"
 >
   <Hero />
-  <main class="mt-10">
+  <main class="my-8 flex flex-col gap-y-6">
     <Projects />
   </main>
+  <footer
+    class="mx-auto flex max-w-xl flex-col gap-y-7 border-t bg-card py-4 text-card-foreground"
+  >
+    <Contact />
+    <div class="flex justify-between border-t px-5 pt-4">
+      <p>Building software with ♥ from 🇨🇴 to the world.</p>
+      <a
+        href="https://github/bjohansebas"
+        title="Visit Sebastian Beltran's profile on Github"
+        ><Github class="size-5" /></a
+      >
+    </div>
+  </footer>
 </Layout>
