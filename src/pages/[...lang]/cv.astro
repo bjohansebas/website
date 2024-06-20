@@ -61,8 +61,8 @@ const t = useTranslations(
       ><Education education={education} /></Section
     >
     <Section title={t("cv.projects")}><Projects projects={projects} /></Section>
-    <div class="grid grid-cols-3 gap-2">
-      <Section title={t("cv.skills")}>
+    <div class="grid grid-cols-3 gap-2 max-sm:grid-cols-1">
+      <Section title={t("cv.language")}>
         <Languages languages={languages} />
       </Section>
       <Section title={t("cv.skills")} class="col-span-2"

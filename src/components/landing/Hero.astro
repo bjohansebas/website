@@ -1,6 +1,17 @@
 ---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import { Image } from "astro:assets";
-import { AtSign, Github, Twitter, Linkedin, Contact2 } from "lucide-astro";
+import {
+  AtSign,
+  Github,
+  Twitter,
+  Linkedin,
+  Contact2,
+  NotepadTextDashed,
+} from "lucide-astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const SOCIAL_MEDIA = [
   { name: "Github", href: "https://github.com/bjohansebas", icon: Github },
@@ -53,7 +64,17 @@ const SOCIAL_MEDIA = [
       {
         SOCIAL_MEDIA.map(({ name, href, ...social }) => (
           <a
-            aria-label={`Go to ${name}`}
+            title={
+              name !== "Contact"
+                ? t("see.network", {
+                    name: "Sebastian Beltran",
+                    network: name,
+                  })
+                : t("see.email", {
+                    name: "Sebastian Beltran",
+                    email: "bjohansebas@gmail.com",
+                  })
+            }
             href={href}
             target="_blank"
             class="group relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-md border border-muted-foreground bg-card font-medium text-muted-foreground transition-all duration-300 hover:w-28 hover:rounded-full hover:border-primary hover:text-primary"
@@ -72,6 +93,16 @@ const SOCIAL_MEDIA = [
           </a>
         ))
       }
+
+      <a
+        href={"/cv"}
+        class="flex h-9 w-28 items-center gap-2 rounded-md border border-muted-foreground bg-card px-4 font-medium text-muted-foreground transition-all duration-300 hover:border-primary hover:text-primary"
+      >
+        <div>
+          <NotepadTextDashed class="size-4" />
+        </div>
+        <div class="inline-flex whitespace-nowrap text-sm">Resume</div>
+      </a>
     </div>
   </div>
   <h2 class="mt-2 flex items-center gap-x-2 text-balance text-lg font-semibold">

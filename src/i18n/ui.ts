@@ -20,6 +20,7 @@ export const ui = {
     "cv.education": "Education",
     "cv.projects": "Projects",
     "cv.skills": "Skills",
+    "cv.language": "Languages",
     "common.present": "Present",
     "common.seeLink": ({ link }: { link: string }) => `See ${link}`,
     "see.email": ({ name, email }: { name: string; email: string }) =>
@@ -29,6 +30,13 @@ export const ui = {
     "see.project": ({ name }: { name: string }) => `See the project ${name}`,
     "see.source": ({ name }: { name: string }) =>
       `See the source code of the project ${name}`,
+    "commands.search": "Search command",
+    "commands.print": "Print",
+    "commands.social": ({ network }: { network: string }) => `Visit ${network}`,
+    "commands.seccions.actions": `Actions`,
+    "commands.seccions.network": `Network`,
+    "commands.footer":
+      "Press <kbd>Cmd</kbd> + <kbd>K</kbd> to open the command palette.",
   },
   es: {
     "hero.a.email.title":
@@ -52,6 +60,7 @@ export const ui = {
     "cv.education": "Educación",
     "cv.projects": "Proyectos",
     "cv.skills": "Habilidades",
+    "cv.language": "Idiomas",
     "common.present": "Actual",
     "common.seeLink": ({ link }: { link: string }) => `Ver ${link}`,
     "see.email": ({ name, email }: { name: string; email: string }) =>
@@ -61,5 +70,13 @@ export const ui = {
     "see.project": ({ name }: { name: string }) => `Ver el proyecto ${name}`,
     "see.source": ({ name }: { name: string }) =>
       `Ver código fuente del proyecto ${name}`,
+    "commands.search": "Buscar comando",
+    "commands.print": "Imprimir",
+    "commands.social": ({ network }: { network: string }) =>
+      `Visitar ${network}`,
+    "commands.seccions.actions": `Acciones`,
+    "commands.seccions.network": `Social`,
+    "commands.footer":
+      "Pulsa <kbd>Cmd</kbd> + <kbd>K</kbd> para abrir la paleta de comandos.",
   },
 } as const;
