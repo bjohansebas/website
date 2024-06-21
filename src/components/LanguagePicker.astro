@@ -1,0 +1,58 @@
+---
+import { ChevronDown } from "lucide-astro";
+import {
+  getRouteFromUrl,
+  useTranslatedPath,
+  getLangFromUrl,
+} from "../i18n/utils";
+import { LANGUAGES } from "../i18n/ui";
+import UnitedStates from "./flags/UnitedStates.astro";
+import Spain from "./flags/Spain.astro";
+
+const route = getRouteFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+
+const flags = { en: UnitedStates, es: Spain };
+const currentLocaleData = { ...LANGUAGES[lang], flag: flags[lang] };
+const otherLocales = Object.values(LANGUAGES)
+  .filter((locale) => locale.code !== lang)
+  .map((val) => {
+    return { ...val, flag: flags[val.code] };
+  });
+---
+
+<div class="absolute right-16 inline-block text-left">
+  <div
+    class="group rounded-md bg-black/30 text-xs font-semibold text-white transition-all hover:bg-black/70"
+  >
+    <button
+      type="button"
+      class="inline-flex w-full items-center justify-start gap-x-2 px-3 py-2"
+      aria-expanded="true"
+      aria-haspopup="true"
+    >
+      {}
+      <currentLocaleData.flag />
+      {currentLocaleData.name}
+      <ChevronDown />
+    </button>
+    <ul
+      class="group-hover:animate-fade-down group-hover:animate-duration-200 absolute hidden w-full pt-0.5 group-hover:block"
+    >
+      {
+        otherLocales.map((locale) => (
+          <li class="py-[2px]">
+            <a
+              class="whitespace-no-wrap inline-flex w-full items-center justify-start gap-x-2 rounded-md bg-black/30 px-3 py-2 hover:bg-black/70"
+              href={translatePath(`/${route ? route : ""}`, locale.code)}
+            >
+              <locale.flag />
+              {locale.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

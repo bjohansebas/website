@@ -1,3 +1,14 @@
+export const LANGUAGES: Record<string, { code: string; name: string }> = {
+  en: {
+    code: "en",
+    name: "English",
+  },
+  es: {
+    code: "es",
+    name: "Español",
+  },
+};
+
 export const ui = {
   en: {
     "hero.a.email.title": "Send e-mail to {name} at {email}",
@@ -80,3 +91,12 @@ export const ui = {
       "Pulsa <kbd>Cmd</kbd> + <kbd>K</kbd> para abrir la paleta de comandos.",
   },
 } as const;
+
+export const routes = {
+  en: {
+    cv: "cv",
+  },
+  es: {
+    cv: "cv",
+  },
+};
