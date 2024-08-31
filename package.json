@@ -12,26 +12,26 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@astrojs/check": "0.7.0",
-    "@astrojs/sitemap": "3.1.5",
+    "@astrojs/check": "0.9.3",
+    "@astrojs/sitemap": "3.1.6",
     "@astrojs/tailwind": "5.1.0",
-    "@astrojs/vercel": "7.6.0",
+    "@astrojs/vercel": "7.8.0",
     "@fontsource/geist-sans": "5.0.3",
-    "astro": "4.10.3",
-    "tailwindcss": "3.4.4",
+    "astro": "4.15.1",
+    "tailwindcss": "3.4.10",
     "hotkeypad": "0.1.1",
-    "typescript": "5.4.5"
+    "typescript": "5.5.4"
   },
   "devDependencies": {
-    "husky": "9.0.11",
-    "lightningcss": "1.25.1",
-    "lint-staged": "15.2.7",
-    "lucide-astro": "0.395.0",
-    "oxlint": "0.4.4",
-    "prettier": "3.3.2",
-    "prettier-plugin-astro": "0.14.0",
-    "prettier-plugin-organize-imports": "3.2.4",
-    "prettier-plugin-tailwindcss": "0.6.5"
+    "husky": "9.1.5",
+    "lightningcss": "1.26.0",
+    "lint-staged": "15.2.9",
+    "lucide-astro": "0.437.0",
+    "oxlint": "0.9.1",
+    "prettier": "3.3.3",
+    "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-organize-imports": "4.0.0",
+    "prettier-plugin-tailwindcss": "0.6.6"
   },
-  "packageManager": "bun@1.1.13"
+  "packageManager": "bun@1.1.26"
 }
