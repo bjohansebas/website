@@ -1,0 +1,42 @@
+---
+import CodeIcon from "@/components/icons/Code.astro";
+
+const PROJECTS = [
+  {
+    title: "Express",
+    image: "/public/logos/expressjs.svg",
+    link: "https://github.com/orgs/expressjs/people",
+  },
+  {
+    title: "Ada URL Website",
+    link: "https://github.com/ada-url/website/pulls/bjohansebas",
+  },
+];
+---
+
+<section class="mx-auto flex w-full max-w-xl flex-col">
+  <header class="mb-5 flex flex-col gap-2">
+    <h2 class="flex items-center gap-x-2 text-lg font-semibold text-foreground">
+      <CodeIcon class="size-5" />Open Source Contributions
+    </h2>
+    <p>I have been helping these projects in my free time.</p>
+  </header>
+  <div class="flex gap-4">
+    {
+      PROJECTS.map(({ title, image, link }, i) => (
+        <a href={link} target="_blank">
+          <article class="w-full rounded-2xl border bg-card px-4 py-4 transition-colors hover:border-primary">
+            <header class="flex items-center space-x-3">
+              {image != null ? <img src={image} class="h-[28px]" /> : null}
+              {image == null ? (
+                <h3 class="text-balance text-lg font-semibold text-foreground">
+                  {title}
+                </h3>
+              ) : null}
+            </header>
+          </article>
+        </a>
+      ))
+    }
+  </div>
+</section>
