@@ -1,0 +1,67 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+type Props = {
+  oss: CollectionEntry<"cv">["data"]["oss"];
+};
+
+const { oss } = Astro.props;
+console.log(oss);
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<ul class="mx-[-16px] grid gap-4">
+  {
+    oss.map(({ url, description, highlights, name }) => {
+      return (
+        <li class="">
+          <article class="flex h-full flex-col rounded-lg border border-solid border-border bg-card/70 p-4">
+            <header class="mb-1 flex items-center gap-2">
+              <h3 class="flex items-center gap-1">
+                <a
+                  href={url}
+                  target="_blank"
+                  title={t("see.project", { name })}
+                >
+                  {name}
+                </a>
+              </h3>
+            </header>
+            <p class="mb-4 text-xs text-muted-foreground">{description}</p>
+            <footer class="flex flex-wrap gap-1 text-xs">
+              {highlights.map((highlight) => {
+                return (
+                  <span class="rounded-md bg-muted text-xs font-medium text-muted-foreground">
+                    {highlight}
+                  </span>
+                );
+              })}
+            </footer>
+          </article>
+        </li>
+      );
+    })
+  }
+</ul>
+
+<style>
+  ul {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  article a:hover {
+    text-decoration: underline;
+  }
+
+  footer span {
+    padding: 0.2rem 0.6rem;
+  }
+
+  @media (width <= 700px) {
+    ul {
+      margin-inline: 0px;
+    }
+  }
+</style>

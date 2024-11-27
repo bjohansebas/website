@@ -29,6 +29,20 @@
     ]
   },
   "work": [],
+  "oss": [
+    {
+      "name": "Express",
+      "url": "https://expressjs.com",
+      "description": "I assist in the maintenance of their website, improving accessibility, design, and documentation. Additionally, I help with compression maintenance and in creating codemods for the new version of Express.",
+      "highlights": [
+        "Open Source",
+        "JavaScript & TypeScript",
+        "Documentation",
+        "Accessibility",
+        "Design"
+      ]
+    }
+  ],
   "education": [
     {
       "institution": "Platzi",

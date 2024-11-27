@@ -65,6 +65,15 @@ const ProjectsSchema = z.array(
   }),
 );
 
+const OssSchema = z.array(
+  z.object({
+    name: z.string(),
+    description: z.string(),
+    highlights: z.array(z.string()),
+    url: z.string().nullable(),
+  }),
+);
+
 export const CVSchema = z.object({
   basics: BasicsSchema,
   work: WorkSchema,
@@ -72,4 +81,5 @@ export const CVSchema = z.object({
   skills: SkillsSchema,
   languages: LanguagesSchema,
   projects: ProjectsSchema,
+  oss: OssSchema,
 });
