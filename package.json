@@ -28,9 +28,9 @@
     "lint-staged": "15.2.9",
     "lucide-astro": "0.437.0",
     "oxlint": "0.9.1",
-    "prettier": "3.3.3",
+    "prettier": "3.4.1",
     "prettier-plugin-astro": "0.14.1",
-    "prettier-plugin-organize-imports": "4.0.0",
-    "prettier-plugin-tailwindcss": "0.6.6"
+    "prettier-plugin-organize-imports": "4.1.0",
+    "prettier-plugin-tailwindcss": "0.6.9"
   }
 }
