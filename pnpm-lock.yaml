@@ -46,8 +46,8 @@ importers:
         specifier: 15.2.10
         version: 15.2.10
       lucide-astro:
-        specifier: 0.437.0
-        version: 0.437.0(astro@4.16.16(lightningcss@1.26.0)(rollup@4.27.4)(typescript@5.5.4))
+        specifier: 0.462.0
+        version: 0.462.0(astro@4.16.16(lightningcss@1.26.0)(rollup@4.27.4)(typescript@5.5.4))
       oxlint:
         specifier: 0.13.2
         version: 0.13.2
@@ -1578,8 +1578,8 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lucide-astro@0.437.0:
-    resolution: {integrity: sha512-9wJbtr0wB5GFeT3BY0Q+f444DtPPT0xXGJrjkgdOwfPa48ZIpO4ZYZT/8ifqy3bVXBlFHDAcG4ZbqZ1O1f4ZhQ==}
+  lucide-astro@0.462.0:
+    resolution: {integrity: sha512-Y4ovkq3td6kbRPg1dhulA0ejhgl/A8bMPgiEm11jfX0jX1NoLG8+ICj2sOMlWpBiaFQS+6oWUEc/GwOpSy1EHw==}
     peerDependencies:
       astro: '>=2.7.1'
 
@@ -4274,7 +4274,7 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lucide-astro@0.437.0(astro@4.16.16(lightningcss@1.26.0)(rollup@4.27.4)(typescript@5.5.4)):
+  lucide-astro@0.462.0(astro@4.16.16(lightningcss@1.26.0)(rollup@4.27.4)(typescript@5.5.4)):
     dependencies:
       astro: 4.16.16(lightningcss@1.26.0)(rollup@4.27.4)(typescript@5.5.4)
 
