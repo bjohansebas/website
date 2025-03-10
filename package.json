@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "husky": "9.1.7",
-    "lightningcss": "1.28.2",
+    "lightningcss": "1.29.2",
     "lint-staged": "15.3.0",
     "lucide-astro": "0.469.0",
     "oxlint": "0.15.5",
