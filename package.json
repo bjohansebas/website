@@ -27,7 +27,7 @@
     "lightningcss": "1.28.2",
     "lint-staged": "15.5.0",
     "lucide-astro": "0.483.0",
-    "oxlint": "0.15.5",
+    "oxlint": "1.7.0",
     "prettier": "3.5.3",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-organize-imports": "4.1.0",
