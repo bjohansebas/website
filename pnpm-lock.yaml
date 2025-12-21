@@ -21,8 +21,8 @@ importers:
         specifier: 8.0.6
         version: 8.0.6(astro@5.2.5(jiti@1.21.7)(lightningcss@1.28.2)(rollup@4.34.6)(typescript@5.8.2)(yaml@2.7.1))(rollup@4.34.6)
       '@fontsource/geist-sans':
-        specifier: 5.1.0
-        version: 5.1.0
+        specifier: 5.2.5
+        version: 5.2.5
       astro:
         specifier: 5.2.5
         version: 5.2.5(jiti@1.21.7)(lightningcss@1.28.2)(rollup@4.34.6)(typescript@5.8.2)(yaml@2.7.1)
@@ -319,8 +319,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@fontsource/geist-sans@5.1.0':
-    resolution: {integrity: sha512-4AI/UxIcZiYgK6/cTo4R9oM4VHHLcFdHVv7m2+M42VyY16hhKJADrGe4HPjTxvolmce2IZX/jc6sFJ+GkLB64w==}
+  '@fontsource/geist-sans@5.2.5':
+    resolution: {integrity: sha512-anllOHyJbElRs9fV15TeDRqAeb1IKm4bSknPl6ZMoyPTx1BBy7logudcUwpNjmQLkzn4Q0JGQLRCUKJYoyST6A==}
 
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -2934,7 +2934,7 @@ snapshots:
   '@esbuild/win32-x64@0.24.2':
     optional: true
 
-  '@fontsource/geist-sans@5.1.0': {}
+  '@fontsource/geist-sans@5.2.5': {}
 
   '@img/sharp-darwin-arm64@0.33.5':
     optionalDependencies:
