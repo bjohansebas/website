@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "check": "oxlint --fix . && prettier --write .",
+    "check": "oxlint . && prettier --check .",
+    "check:fix": "oxlint --fix . && prettier --write .",
     "astro": "astro",
     "prepare": "husky"
   },
