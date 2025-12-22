@@ -18,22 +18,23 @@ const SPONSORS = (sponsorsData && sponsorsData.sponsors) || [];
         <Heart class="size-5" />{t("landing.sponsors.title")}
       </h2>
     </div>
-    <p class="text-muted-foreground">{t("landing.sponsors.subtitle")}</p>
-    {
-      SPONSORS.length > 0 && (
-        <p class="mt-1 text-muted-foreground">
-          {t("landing.sponsors.visit")}{" "}
-          <a
-            href="https://github.com/sponsors/bjohansebas"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="underline hover:text-foreground"
-          >
-            GitHub Sponsors
-          </a>
-        </p>
-      )
-    }
+    <p class="text-muted-foreground">
+      {t("landing.sponsors.subtitle")} - {
+        SPONSORS.length > 0 && (
+          <>
+            {t("landing.sponsors.visit")}{" "}
+            <a
+              href="https://github.com/sponsors/bjohansebas"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="underline hover:text-foreground"
+            >
+              GitHub Sponsors
+            </a>
+          </>
+        )
+      }
+    </p>
   </header>
 
   {

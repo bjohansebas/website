@@ -7,6 +7,7 @@ import {
 
 import { AtSign, Github, Twitter, Linkedin, Sun, Moon } from "lucide-astro";
 import LanguagePicker from "@/components/LanguagePicker.astro";
+import Menu from "@/components/Menu.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -35,11 +36,14 @@ const SOCIAL_MEDIA = [
   },
   { name: "Contact", href: "mailto:bjohansebas@gmail.com", icon: AtSign },
 ];
+const SUPPORT_LINK = "https://github.com/sponsors/bjohansebas";
+const IS_INDEX = Astro.url.pathname === translatePath("/");
 ---
 
 <div class="sticky top-0 z-50 bg-background/90 px-4 py-3 backdrop-blur-md">
   <div class="mx-auto flex max-w-[75ch] items-center justify-between">
-    <nav class="flex items-center gap-1">
+    <!-- Desktop nav -->
+    <nav class="hidden items-center gap-1 md:flex">
       {
         NAV_LINKS.map(({ name, href }) => (
           <a
@@ -51,82 +55,188 @@ const SOCIAL_MEDIA = [
         ))
       }
     </nav>
-    <div class="mt-1 flex items-center gap-1">
-      {
-        SOCIAL_MEDIA.map(({ name, href, ...social }) => (
-          <a
-            title={
-              name !== "Contact"
-                ? t("see.network", {
-                    name: "Sebastian Beltran",
-                    network: name,
-                  })
-                : t("see.email", {
-                    name: "Sebastian Beltran",
-                    email: "bjohansebas@gmail.com",
-                  })
-            }
-            href={href}
-            target="_blank"
-            class="px-2 font-medium text-muted-foreground transition-all duration-300 hover:border-primary hover:text-primary"
-          >
+
+    <div class="flex w-full items-center gap-1 max-md:justify-between">
+      <!-- Mobile: support link on the left -->
+      <div class="flex w-full items-center justify-end gap-2">
+        {
+          !IS_INDEX && (
+            <a
+              href={SUPPORT_LINK}
+              target="_blank"
+              class="inline-flex min-w-fit items-center gap-2 rounded-lg border border-pink-500 bg-pink-500/10 px-3 py-1.5 text-sm font-medium text-pink-500 transition-colors hover:bg-pink-500/20"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+              </svg>
+              {t("landing.sponsors.support")}
+            </a>
+          )
+        }
+        <div class="flex justify-end gap-1 max-md:w-full">
+          <!-- Desktop socials + controls -->
+          <div class="hidden items-center gap-1 md:flex">
             {
-              <social.icon
-                class="size-4 text-inherit"
-                aria-label={`${name} icon`}
-              />
+              SOCIAL_MEDIA.map(({ name, href, ...social }) => (
+                <a
+                  title={
+                    name !== "Contact"
+                      ? t("see.network", {
+                          name: "Sebastian Beltran",
+                          network: name,
+                        })
+                      : t("see.email", {
+                          name: "Sebastian Beltran",
+                          email: "bjohansebas@gmail.com",
+                        })
+                  }
+                  href={href}
+                  target="_blank"
+                  class="px-2 font-medium text-muted-foreground transition-all duration-300 hover:border-primary hover:text-primary"
+                >
+                  {
+                    <social.icon
+                      class="size-4 text-inherit"
+                      aria-label={`${name} icon`}
+                    />
+                  }
+                </a>
+              ))
             }
-          </a>
-        ))
-      }
-      <button
-        id="theme-toggle"
-        type="button"
-        title="Toggle theme"
-        class="ml-2 rounded-lg p-2 text-muted-foreground transition-all duration-300 hover:bg-accent hover:text-primary"
-      >
-        <Sun class="hidden size-4 dark:block" />
-        <Moon class="block size-4 dark:hidden" />
-      </button>
-      <LanguagePicker />
+          </div>
+          <div class="flex gap-1">
+            <button
+              id="theme-toggle"
+              type="button"
+              title="Toggle theme"
+              class="ml-2 rounded-lg p-2 text-muted-foreground transition-all duration-300 hover:bg-accent hover:text-primary"
+            >
+              <Sun class="hidden size-4 dark:block" />
+              <Moon class="block size-4 dark:hidden" />
+            </button>
+            <LanguagePicker />
+          </div>
+          <div class="relative">
+            <!-- Mobile hamburger -->
+            <button
+              id="mobile-menu-toggle"
+              aria-expanded="false"
+              class="ml-2 rounded-lg p-2 text-muted-foreground transition-all duration-300 hover:bg-accent hover:text-primary md:hidden"
+              title="Open menu"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+
+            <!-- Mobile menu dropdown (hidden by default) -->
+            <div id="mobile-menu" class="hidden md:hidden">
+              <Menu navLinks={NAV_LINKS} socials={SOCIAL_MEDIA} />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-<script>
-  function getThemePreference(): "dark" | "light" {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme") as "dark" | "light";
+  <script>
+    function getThemePreference(): "dark" | "light" {
+      if (
+        typeof localStorage !== "undefined" &&
+        localStorage.getItem("theme")
+      ) {
+        return localStorage.getItem("theme") as "dark" | "light";
+      }
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
     }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  }
 
-  function setTheme(theme: "dark" | "light") {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+    function setTheme(theme: "dark" | "light") {
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+      localStorage.setItem("theme", theme);
     }
-    localStorage.setItem("theme", theme);
-  }
 
-  // Set initial theme
-  setTheme(getThemePreference());
+    // Set initial theme
+    setTheme(getThemePreference());
 
-  // Toggle button
-  document.getElementById("theme-toggle")?.addEventListener("click", () => {
-    const isDark = document.documentElement.classList.contains("dark");
-    setTheme(isDark ? "light" : "dark");
-  });
+    // Toggle button
+    document.getElementById("theme-toggle")?.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.contains("dark");
+      setTheme(isDark ? "light" : "dark");
+    });
 
-  // Listen for system preference changes
-  window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", (e) => {
-      if (!localStorage.getItem("theme")) {
-        setTheme(e.matches ? "dark" : "light");
+    // Mobile menu toggle
+    /** @type {HTMLElement | null} */
+    const mobileToggle = document.getElementById("mobile-menu-toggle");
+    /** @type {HTMLElement | null} */
+    const mobileMenu = document.getElementById("mobile-menu");
+    mobileToggle?.addEventListener("click", () => {
+      if (!mobileMenu) return;
+      const expanded = mobileToggle.getAttribute("aria-expanded") === "true";
+      // toggle visibility
+      if (mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.remove("hidden");
+        mobileToggle.setAttribute("aria-expanded", "true");
+        mobileToggle.title = "Close menu";
+      } else {
+        mobileMenu.classList.add("hidden");
+        mobileToggle.setAttribute("aria-expanded", "false");
+        mobileToggle.title = "Open menu";
       }
     });
-</script>
+
+    // Close menu when clicking outside
+    document.addEventListener("pointerdown", (e) => {
+      const target = e.target;
+      if (!(target instanceof Node)) return;
+      if (!mobileMenu || mobileMenu.classList.contains("hidden")) return;
+      const clickedInsideMenu = mobileMenu.contains(target);
+      const clickedToggle = mobileToggle?.contains(target as Node);
+      if (!clickedInsideMenu && !clickedToggle) {
+        mobileMenu.classList.add("hidden");
+        mobileToggle?.setAttribute("aria-expanded", "false");
+        if (mobileToggle) mobileToggle.title = "Open menu";
+      }
+    });
+
+    // Hide mobile menu on resize (avoid showing when changing layout)
+    window.addEventListener("resize", () => {
+      if (!mobileMenu) return;
+      if (!mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.add("hidden");
+        mobileToggle?.setAttribute("aria-expanded", "false");
+        if (mobileToggle) mobileToggle.title = "Open menu";
+      }
+    });
+
+    // Listen for system preference changes
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        if (!localStorage.getItem("theme")) {
+          setTheme(e.matches ? "dark" : "light");
+        }
+      });
+  </script>
+</div>
