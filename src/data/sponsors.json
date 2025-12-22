@@ -2,5 +2,33 @@
   "counts": {
     "total": 3
   },
-  "sponsors": []
+  "sponsors": [
+    {
+      "id": 12037269,
+      "login": "ovflowd",
+      "name": "Claudio Wunder",
+      "avatar": "https://avatars.githubusercontent.com/u/12037269?u=a65cd9bf0c565d483ddb7aaed6f7fa0bf6277531&v=4",
+      "url": "https://github.com/ovflowd",
+      "tier": null,
+      "lastActivity": null
+    },
+    {
+      "id": 12631491,
+      "login": "mfdebian",
+      "name": "Alfredo González",
+      "avatar": "https://avatars.githubusercontent.com/u/12631491?u=507fd9ceda16ebfbb6fa2a9b73f6ce375927526d&v=4",
+      "url": "https://github.com/mfdebian",
+      "tier": null,
+      "lastActivity": null
+    },
+    {
+      "id": 61623638,
+      "login": "mertssmnoglu",
+      "name": "Mert Şişmanoğlu",
+      "avatar": "https://avatars.githubusercontent.com/u/61623638?u=59dd885b68ff1832f9ab3b4a4446896358c23442&v=4",
+      "url": "https://mertsismanoglu.com",
+      "tier": null,
+      "lastActivity": null
+    }
+  ]
 }
