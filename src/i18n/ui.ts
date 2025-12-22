@@ -24,7 +24,9 @@ export const ui = {
     "landing.oss.viewOnGitHub": "View on GitHub:",
     "landing.sponsors.title": "Sponsors",
     "landing.sponsors.subtitle": "Thanks to the people who support my work.",
+    "landing.sponsors.visit": "Want to support me? Visit my",
     "landing.sponsors.empty": "Be the first to support my open source work!",
+    "landing.sponsors.joinPrompt": "If you'd like to join, visit",
     "landing.sponsors.become": "Become a sponsor",
     "footer.text": "Building software with ♥ from 🇨🇴 to the world.",
     "nav.home": "Home",
@@ -83,8 +85,10 @@ export const ui = {
     "landing.sponsors.title": "Patrocinadores",
     "landing.sponsors.subtitle":
       "Gracias a las personas que apoyan mi trabajo.",
+    "landing.sponsors.visit": "¿Quieres apoyarme? Visita mi",
     "landing.sponsors.empty":
-      "¡Sé el primero en apoyar mi trabajo open source!",
+      "¡Sé el primero en apoyar mi trabajo de código abierto!",
+    "landing.sponsors.joinPrompt": "Si quieres unirte, visita",
     "landing.sponsors.become": "Convertirse en patrocinador",
     "footer.text": "Construyendo software con ♥ desde 🇨🇴 para el mundo.",
     "nav.home": "Inicio",

@@ -19,23 +19,49 @@ const SPONSORS = (sponsorsData && sponsorsData.sponsors) || [];
       </h2>
     </div>
     <p class="text-muted-foreground">{t("landing.sponsors.subtitle")}</p>
+    {
+      SPONSORS.length > 0 && (
+        <p class="mt-1 text-muted-foreground">
+          {t("landing.sponsors.visit")}{" "}
+          <a
+            href="https://github.com/sponsors/bjohansebas"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline hover:text-foreground"
+          >
+            GitHub Sponsors
+          </a>
+        </p>
+      )
+    }
   </header>
 
   {
     SPONSORS.length > 0 ? (
-      <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-        {SPONSORS.map(({ name, href, logo, avatar, tier }) => (
+      <div class="flex flex-wrap items-center gap-2">
+        {SPONSORS.map(({ name, url, avatar }) => (
           <a
-            href={href}
+            href={url}
             target="_blank"
             rel="noopener noreferrer"
-            class="flex items-center justify-center rounded-2xl border bg-card p-4 transition-colors hover:border-primary"
+            class="group relative flex items-center justify-center gap-2 rounded-2xl border bg-card px-3 py-2 transition-colors hover:border-primary"
+            aria-label={name}
           >
-            {logo || avatar ? (
-              <img src={logo || avatar} alt={name} class="h-8" />
+            {avatar ? (
+              <img
+                src={avatar}
+                alt=""
+                class="h-8 w-8 rounded-full object-cover"
+              />
             ) : (
-              <span class="font-medium text-foreground">{name}</span>
+              <div class="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-sm text-foreground">
+                {name ? name[0] : "?"}
+              </div>
             )}
+
+            <span class="pointer-events-none absolute -top-10 left-1/2 z-50 hidden -translate-x-1/2 rounded-md bg-background/90 px-2 py-1 text-xs text-foreground shadow-md group-hover:block group-focus:block">
+              {name}
+            </span>
           </a>
         ))}
       </div>

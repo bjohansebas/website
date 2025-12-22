@@ -3,7 +3,6 @@ import fs from "fs/promises";
 import process from "process";
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const USER = "bjohansebas";
 const OUT = new URL("../src/data/sponsors.json", import.meta.url).pathname;
 
 if (!GITHUB_TOKEN) {
@@ -29,63 +28,147 @@ const graphql = async (query, variables = {}) => {
   return res.json();
 };
 
-// We'll fetch sponsorships where the user is the maintainer (sponsors of the user)
-const QUERY = `
-query Sponsors($login: String!, $cursor: String) {
-  user(login: $login) {
-    sponsorshipsAsMaintainer(first: 100, after: $cursor) {
-      pageInfo { hasNextPage endCursor }
-      nodes {
-        sponsorEntity {
-          __typename
-          ... on User { login name avatarUrl url }
-          ... on Organization { login name avatarUrl url }
-        }
-        createdAt
-        tier {
-          name
-          monthlyPriceInCents
-        }
-      }
-    }
-  }
+function sponsorshipsQuery(cursor = null) {
+  return `
+            query {
+                user(login: "bjohansebas") {
+                    sponsorshipsAsMaintainer (first: 100, includePrivate: false, after: "${cursor}", activeOnly: false) {
+                        nodes {
+                            sponsor: sponsorEntity {
+                                ...on User {
+                                    id: databaseId,
+                                    name,
+                                    login,
+                                    avatarUrl,
+                                    url,
+                                    websiteUrl
+                                }
+                                ...on Organization {
+                                    id: databaseId,
+                                    name,
+                                    login,
+                                    avatarUrl,
+                                    url,
+                                    websiteUrl
+                                }
+                            },
+                        }
+                        pageInfo {
+                            endCursor
+                            startCursor
+                            hasNextPage
+                            hasPreviousPage
+                        }
+                    }
+                }
+            }
+        `;
 }
-`;
 
+const donationsQuery = `
+        query {
+            user(login: "bjohansebas") {
+                sponsorsActivities (first: 100, includePrivate: false) {
+                    nodes {
+                        id
+                        sponsor {
+                            ...on User {
+                                id: databaseId,
+                                name,
+                                login,
+                                avatarUrl,
+                                url,
+                                websiteUrl
+                            }
+                            ...on Organization {
+                                id: databaseId,
+                                name,
+                                login,
+                                avatarUrl,
+                                url,
+                                websiteUrl
+                            }
+                        },
+                        timestamp
+                    }
+                }
+            }
+        }
+    `;
+
+// Use the provided sponsorshipsQuery and donationsQuery to collect sponsors and activities
 (async () => {
   try {
-    let all = [];
+    let sponsors = [];
+
+    // Fetch sponsorship pages
     let cursor = null;
     while (true) {
-      const data = await graphql(QUERY, { login: USER, cursor });
+      const query = sponsorshipsQuery(cursor);
+      const data = await graphql(query);
       if (data.errors) throw new Error(JSON.stringify(data.errors));
       const nodeRes = data.data.user?.sponsorshipsAsMaintainer;
       if (!nodeRes) break;
       const { nodes, pageInfo } = nodeRes;
-      const mapped = nodes.map((n) => ({
-        login: n.sponsorEntity.login,
-        name: n.sponsorEntity.name,
-        avatar: n.sponsorEntity.avatarUrl,
-        url: n.sponsorEntity.url,
-        since: n.createdAt,
-        tier: n.tier
-          ? { name: n.tier.name, monthlyCents: n.tier.monthlyPriceInCents }
-          : null,
-      }));
-      all.push(...mapped);
+      const mapped = nodes.map((n) => {
+        const s = n.sponsor || n.sponsorEntity || n.sponsorEntity; // support different field names
+        return {
+          id: s?.id || null,
+          login: s?.login || null,
+          name: s?.name || s?.login || null,
+          avatar: s?.avatarUrl || null,
+          url: s?.websiteUrl || s?.url || null,
+          tier: n.tier
+            ? {
+                monthlyPriceInDollars:
+                  n.tier.monthlyPriceInDollars ?? n.tier.monthlyPriceInCents,
+                isOneTime: n.tier.isOneTime ?? false,
+              }
+            : null,
+        };
+      });
+      sponsors.push(...mapped);
       if (!pageInfo.hasNextPage) break;
       cursor = pageInfo.endCursor;
     }
 
+    // Fetch donations/activities to get timestamps and additional info
+    const activitiesRes = await graphql(donationsQuery);
+    if (activitiesRes.errors)
+      throw new Error(JSON.stringify(activitiesRes.errors));
+    const activities = activitiesRes.data.user?.sponsorsActivities?.nodes || [];
+
+    // Build map of last activity timestamp per sponsor login or id
+    const lastActivity = {};
+    activities.forEach((act) => {
+      const s = act.sponsor;
+      const key = s?.login || s?.id || s?.name;
+      if (!key) return;
+      const ts = act.timestamp || act.createdAt || null;
+      if (
+        !lastActivity[key] ||
+        (ts && new Date(ts) > new Date(lastActivity[key]))
+      ) {
+        lastActivity[key] = ts;
+      }
+    });
+
+    // Merge lastActivity into sponsors
+    const merged = sponsors.map((sp) => {
+      const key = sp.login || sp.id || sp.name;
+      return { ...sp, lastActivity: lastActivity[key] || null };
+    });
+
+    const out = {
+      counts: { total: merged.length },
+      sponsors: merged,
+    };
+
     await fs.mkdir(new URL("../src/data", import.meta.url).pathname, {
       recursive: true,
     });
-    await fs.writeFile(
-      OUT,
-      JSON.stringify({ sponsors: all }, null, 2),
-      "utf-8",
-    );
-    console.log(`Wrote ${all.length} sponsors to ${OUT}`);
+    await fs.writeFile(OUT, JSON.stringify(out, null, 2), "utf-8");
+    console.log(`Wrote ${merged.length} sponsors to ${OUT}`);
   } catch (err) {
     console.error(err);
     process.exit(1);
