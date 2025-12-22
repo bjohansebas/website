@@ -1,0 +1,59 @@
+---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+import { AtSign, Github, Twitter, Linkedin } from "lucide-astro";
+
+const SOCIAL_MEDIA = [
+  { name: "Github", href: "https://github.com/bjohansebas", icon: Github },
+  { name: "Twitter", href: "https://x.com/bjohansebas", icon: Twitter },
+  {
+    name: "Linkedin",
+    href: "https://www.linkedin.com/in/bjohansebas/",
+    icon: Linkedin,
+  },
+  { name: "Contact", href: "mailto:bjohansebas@gmail.com", icon: AtSign },
+];
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div class="sticky top-0 z-50 bg-background/90 px-4 py-3 backdrop-blur-md">
+  <div class="mx-auto flex max-w-[75ch] items-center justify-between">
+    <a
+      href={"/cv"}
+      class="px-4 font-medium text-muted-foreground transition-all duration-300 hover:border-primary hover:text-primary"
+    >
+      Resume
+    </a>
+    <div class="mt-1 flex gap-1">
+      {
+        SOCIAL_MEDIA.map(({ name, href, ...social }) => (
+          <a
+            title={
+              name !== "Contact"
+                ? t("see.network", {
+                    name: "Sebastian Beltran",
+                    network: name,
+                  })
+                : t("see.email", {
+                    name: "Sebastian Beltran",
+                    email: "bjohansebas@gmail.com",
+                  })
+            }
+            href={href}
+            target="_blank"
+            class="px-2 font-medium text-muted-foreground transition-all duration-300 hover:border-primary hover:text-primary"
+          >
+            {
+              <social.icon
+                class="size-4 text-inherit"
+                aria-label={`${name} icon`}
+              />
+            }
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</div>
