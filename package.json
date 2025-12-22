@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "fetch:sponsors": "node --env-file=.env ./scripts/fetch-sponsors.mjs",
+    "fetch:sponsors": "node ./scripts/fetch-sponsors.mjs",
+    "fetch:sponsors:env": "node --env-file=.env ./scripts/fetch-sponsors.mjs",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
