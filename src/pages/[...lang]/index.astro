@@ -4,6 +4,7 @@ export const prerender = true;
 import Layout from "@/layouts/main.astro";
 import Hero from "@/components/landing/Hero.astro";
 import OpenSource from "@ui/landing/OpenSource.astro";
+import Sponsors from "@ui/landing/Sponsors.astro";
 
 import { LANGUAGES } from "@/i18n/ui";
 import { defaultLang, showDefaultLang } from "@/i18n/utils";
@@ -23,6 +24,7 @@ export const getStaticPaths = (() => {
   <Hero />
   <main class="my-8 flex flex-col gap-y-6">
     <OpenSource />
+    <Sponsors />
     <!-- <Projects /> -->
   </main>
 </Layout>
