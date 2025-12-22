@@ -1,23 +1,36 @@
 ---
-import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import {
+  getLangFromUrl,
+  useTranslations,
+  useTranslatedPath,
+} from "@/i18n/utils";
 
 import { AtSign, Github, Twitter, Linkedin, Sun, Moon } from "lucide-astro";
 import LanguagePicker from "@/components/LanguagePicker.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 
 const NAV_LINKS = [
-  { name: t("nav.home"), href: "/" },
-  { name: t("nav.resume"), href: "/cv" },
+  { name: t("nav.home"), href: translatePath("/") },
+  { name: t("nav.resume"), href: translatePath("/cv") },
 ];
 
 const SOCIAL_MEDIA = [
-  { name: "Github", href: "https://github.com/bjohansebas", icon: Github },
-  { name: "Twitter", href: "https://x.com/bjohansebas", icon: Twitter },
+  {
+    name: "Github",
+    href: "https://github.com/bjohansebas?utm_source=bjohansebas.me",
+    icon: Github,
+  },
+  {
+    name: "Twitter",
+    href: "https://x.com/bjohansebas?utm_source=bjohansebas.me",
+    icon: Twitter,
+  },
   {
     name: "Linkedin",
-    href: "https://www.linkedin.com/in/bjohansebas/",
+    href: "https://www.linkedin.com/in/bjohansebas/?utm_source=bjohansebas.me",
     icon: Linkedin,
   },
   { name: "Contact", href: "mailto:bjohansebas@gmail.com", icon: AtSign },
