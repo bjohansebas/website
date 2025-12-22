@@ -1,0 +1,87 @@
+---
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<dialog
+  id={id}
+  class="open:animate-fade-in bg-transparent p-0 backdrop:bg-black/50"
+>
+  <div
+    class="relative w-full max-w-md rounded-2xl border bg-card p-6 shadow-lg"
+  >
+    <button
+      class="absolute right-4 top-4 text-muted-foreground transition-colors hover:text-foreground"
+      data-close-modal
+      aria-label="Cerrar modal"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M18 6 6 18"></path>
+        <path d="m6 6 12 12"></path>
+      </svg>
+    </button>
+    <slot />
+  </div>
+</dialog>
+
+<style>
+  dialog::backdrop {
+    animation: fade-in 0.2s ease-out;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  dialog[open] {
+    animation: slide-up 0.2s ease-out;
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll("[data-close-modal]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const dialog = button.closest("dialog");
+      if (dialog) {
+        dialog.close();
+      }
+    });
+  });
+
+  document.querySelectorAll("dialog").forEach((dialog) => {
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) {
+        dialog.close();
+      }
+    });
+  });
+</script>

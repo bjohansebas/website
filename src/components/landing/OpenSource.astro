@@ -1,46 +1,164 @@
 ---
 import CodeIcon from "@/components/icons/Code.astro";
+import Modal from "@/components/Modal.astro";
 
 const PROJECTS = [
   {
     title: "Express",
     image: "/logos/expressjs.svg",
-    link: "https://github.com/orgs/expressjs/people",
+    orgs: ["expressjs", "pillarjs", "jshttp"],
+    contributions:
+      "Website Team Captain, Security & Triage Team member, TypeScript WG co-lead, Performance WG member. Leading website redesign, handling vulnerability reports, and driving initiatives like iconv-lite adoption and HTTP/2 support.",
+  },
+  {
+    title: "Node.js",
+    orgs: ["nodejs"],
+    contributions:
+      "Website Team contributor, Package Maintenance & Triage Team member. Migrated Tailwind 3 to 4, created the Node.js partners page.",
+  },
+  {
+    title: "Webpack",
+    orgs: ["webpack"],
+    contributions: "Security Team member. Helping improve security practices.",
+  },
+  {
+    title: "OpenJS Foundation",
+    orgs: ["openjs-foundation"],
+    contributions:
+      "Cross Project Council (CPC) member. Contributing to the sustainability group and helping coordinate interviews with projects like Astro.",
   },
 ];
 ---
 
-<section class="mx-auto flex w-full max-w-xl flex-col">
+<section class="flex w-full flex-col px-2">
   <header class="mb-5 flex flex-col gap-2">
-    <h2 class="flex items-center gap-x-2 text-lg font-semibold text-foreground">
-      <CodeIcon class="size-5" />Open Source Contributions
-    </h2>
+    <div class="flex items-center justify-between">
+      <h2
+        class="flex items-center gap-x-2 text-lg font-semibold text-foreground"
+      >
+        <CodeIcon class="size-5" />Communities I Contribute to
+      </h2>
+      <a
+        href="https://github.com/sponsors/bjohansebas"
+        target="_blank"
+        class="inline-flex items-center gap-2 rounded-lg border border-pink-500 bg-pink-500/10 px-3 py-1.5 text-sm font-medium text-pink-500 transition-colors hover:bg-pink-500/20"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path
+            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+          ></path>
+        </svg>
+        Support
+      </a>
+    </div>
     <p>I have been helping these projects in my free time.</p>
   </header>
-  <div class="flex flex-wrap gap-4">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
     {
-      PROJECTS.map(({ title, image, link }) => (
-        <a href={link} target="_blank">
-          <article class="w-full rounded-2xl border bg-card px-4 py-4 transition-colors hover:border-primary">
-            <header class="flex items-center space-x-3">
-              {image != null ? (
-                <img
-                  src={image}
-                  class="h-[28px]"
-                  alt={title}
-                  aria-label={title}
-                  loading="lazy"
-                />
-              ) : null}
-              {image == null ? (
-                <h3 class="text-balance text-lg font-semibold text-foreground">
-                  {title}
-                </h3>
-              ) : null}
-            </header>
-          </article>
-        </a>
+      PROJECTS.map(({ title, image, orgs, contributions }, index) => (
+        <>
+          <button
+            type="button"
+            data-open-modal={`modal-${index}`}
+            class="text-center"
+          >
+            <article class="flex h-full w-full cursor-pointer flex-col justify-center gap-2 rounded-2xl border bg-card px-4 py-4 transition-colors hover:border-primary">
+              <header class="flex items-center justify-center gap-3">
+                {image != null ? (
+                  <div class="flex w-full justify-center">
+                    <img
+                      src={image}
+                      class="h-[28px]"
+                      height="28"
+                      alt={title}
+                      aria-label={title}
+                      loading="lazy"
+                    />
+                  </div>
+                ) : null}
+                {image == null ? (
+                  <h3 class="text-balance text-lg font-semibold text-foreground">
+                    {title}
+                  </h3>
+                ) : null}
+              </header>
+              <p class="text-xs">View details</p>
+            </article>
+          </button>
+
+          <Modal id={`modal-${index}`}>
+            <div class="flex flex-col gap-4">
+              <header class="flex items-center gap-3">
+                {image != null && (
+                  <img src={image} class="h-8" alt={title} loading="lazy" />
+                )}
+                {image && (
+                  <h3 class="text-xl font-semibold text-foreground">{title}</h3>
+                )}
+              </header>
+
+              <div>
+                <h4 class="mb-2 text-lg font-bold text-foreground">
+                  Contributions:
+                </h4>
+                {contributions && (
+                  <p class="text-sm text-muted-foreground">{contributions}</p>
+                )}
+              </div>
+
+              <div class="mt-2 flex flex-col gap-1">
+                <span class="text-sm font-medium text-foreground">
+                  View on GitHub:
+                </span>
+                <div class="flex flex-wrap gap-2">
+                  {orgs.map((org) => (
+                    <a
+                      href={`https://github.com/search?q=org%3A${org}+involves%3Abjohansebas&type=issues`}
+                      target="_blank"
+                      class="inline-flex items-center gap-1 text-sm text-primary hover:underline"
+                    >
+                      {org}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                        <polyline points="15 3 21 3 21 9" />
+                        <line x1="10" x2="21" y1="14" y2="3" />
+                      </svg>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Modal>
+        </>
       ))
     }
   </div>
 </section>
+
+<script>
+  document.querySelectorAll("[data-open-modal]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const modalId = button.getAttribute("data-open-modal");
+      const modal = document.getElementById(modalId!) as HTMLDialogElement;
+      if (modal) {
+        modal.showModal();
+      }
+    });
+  });
+</script>
