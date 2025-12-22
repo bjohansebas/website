@@ -1,5 +1,6 @@
 ---
 import Navigation from "@/components/Navigation.astro";
+import Footer from "@/components/Footer.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import { getLangFromUrl } from "@/i18n/utils";
 import "@fontsource/geist-sans/400.css";
@@ -54,11 +55,12 @@ const url = Astro.url.origin;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="" />
   </head>
-  <body class="dark">
+  <body class="dark flex min-h-screen flex-col">
     <Navigation />
-    <div class:list={["px-4 lg:px-10 print:p-0", className]}>
+    <div class:list={["flex-1 px-4 lg:px-10 print:p-0", className]}>
       <slot />
     </div>
+    <Footer />
     <SpeedInsights />
   </body>
 

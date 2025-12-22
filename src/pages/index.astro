@@ -3,29 +3,13 @@ export const prerender = true;
 
 import Layout from "@/layouts/main.astro";
 import Hero from "@/components/landing/Hero.astro";
-import Projects from "@/components/landing/Projects.astro";
-import Contact from "@ui/landing/Contact.astro";
-import { Github } from "lucide-astro";
 import OpenSource from "@ui/landing/OpenSource.astro";
 ---
 
-<Layout class="mx-auto max-w-[75ch]">
+<Layout class="mx-auto mt-8 h-full max-w-[75ch]">
   <Hero />
   <main class="my-8 flex flex-col gap-y-6">
     <OpenSource />
-    <Projects />
+    <!-- <Projects /> -->
   </main>
-  <footer
-    class="mx-auto flex max-w-xl flex-col gap-y-7 border-t bg-card py-4 text-card-foreground"
-  >
-    <Contact />
-    <div class="flex justify-between border-t px-5 pt-4">
-      <p>Building software with ♥ from 🇨🇴 to the world.</p>
-      <a
-        href="https://github.com/bjohansebas"
-        title="Visit Sebastian Beltran's profile on Github"
-        ><Github class="size-5" /></a
-      >
-    </div>
-  </footer>
 </Layout>
