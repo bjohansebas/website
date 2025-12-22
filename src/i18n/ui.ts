@@ -23,6 +23,8 @@ export const ui = {
     "landing.oss.contributions": "Contributions:",
     "landing.oss.viewOnGitHub": "View on GitHub:",
     "footer.text": "Building software with ♥ from 🇨🇴 to the world.",
+    "nav.home": "Home",
+    "nav.resume": "Resume",
     "hero.a.email.title": "Send e-mail to {name} at {email}",
     "hero.a.phone.title": "Call {name} at {phone}",
     "hero.a.social.title": "Visit {name}'s profile on {network}",
@@ -75,6 +77,8 @@ export const ui = {
     "landing.oss.contributions": "Contribuciones:",
     "landing.oss.viewOnGitHub": "Ver en GitHub:",
     "footer.text": "Construyendo software con ♥ desde 🇨🇴 para el mundo.",
+    "nav.home": "Inicio",
+    "nav.resume": "Currículum",
     "hero.a.email.title":
       "Enviar un correo electrónico a {name} al correo {email}",
     "hero.a.phone.title": "Llamar por teléfono a {name} al número {phone}",

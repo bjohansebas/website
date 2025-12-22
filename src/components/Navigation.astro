@@ -4,6 +4,14 @@ import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import { AtSign, Github, Twitter, Linkedin, Sun, Moon } from "lucide-astro";
 import LanguagePicker from "@/components/LanguagePicker.astro";
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const NAV_LINKS = [
+  { name: t("nav.home"), href: "/" },
+  { name: t("nav.resume"), href: "/cv" },
+];
+
 const SOCIAL_MEDIA = [
   { name: "Github", href: "https://github.com/bjohansebas", icon: Github },
   { name: "Twitter", href: "https://x.com/bjohansebas", icon: Twitter },
@@ -14,19 +22,22 @@ const SOCIAL_MEDIA = [
   },
   { name: "Contact", href: "mailto:bjohansebas@gmail.com", icon: AtSign },
 ];
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 ---
 
 <div class="sticky top-0 z-50 bg-background/90 px-4 py-3 backdrop-blur-md">
   <div class="mx-auto flex max-w-[75ch] items-center justify-between">
-    <a
-      href={"/cv"}
-      class="px-4 font-medium text-muted-foreground transition-all duration-300 hover:border-primary hover:text-primary"
-    >
-      Resume
-    </a>
+    <nav class="flex items-center gap-1">
+      {
+        NAV_LINKS.map(({ name, href }) => (
+          <a
+            href={href}
+            class="px-4 font-medium text-muted-foreground transition-all duration-300 hover:border-primary hover:text-primary"
+          >
+            {name}
+          </a>
+        ))
+      }
+    </nav>
     <div class="mt-1 flex items-center gap-1">
       {
         SOCIAL_MEDIA.map(({ name, href, ...social }) => (
