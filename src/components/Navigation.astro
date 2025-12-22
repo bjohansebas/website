@@ -1,7 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
-import { AtSign, Github, Twitter, Linkedin } from "lucide-astro";
+import { AtSign, Github, Twitter, Linkedin, Sun, Moon } from "lucide-astro";
 
 const SOCIAL_MEDIA = [
   { name: "Github", href: "https://github.com/bjohansebas", icon: Github },
@@ -26,7 +26,7 @@ const t = useTranslations(lang);
     >
       Resume
     </a>
-    <div class="mt-1 flex gap-1">
+    <div class="mt-1 flex items-center gap-1">
       {
         SOCIAL_MEDIA.map(({ name, href, ...social }) => (
           <a
@@ -54,6 +54,53 @@ const t = useTranslations(lang);
           </a>
         ))
       }
+      <button
+        id="theme-toggle"
+        type="button"
+        title="Toggle theme"
+        class="ml-2 rounded-lg p-2 text-muted-foreground transition-all duration-300 hover:bg-accent hover:text-primary"
+      >
+        <Sun class="hidden size-4 dark:block" />
+        <Moon class="block size-4 dark:hidden" />
+      </button>
     </div>
   </div>
 </div>
+
+<script>
+  function getThemePreference(): "dark" | "light" {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme") as "dark" | "light";
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  }
+
+  function setTheme(theme: "dark" | "light") {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("theme", theme);
+  }
+
+  // Set initial theme
+  setTheme(getThemePreference());
+
+  // Toggle button
+  document.getElementById("theme-toggle")?.addEventListener("click", () => {
+    const isDark = document.documentElement.classList.contains("dark");
+    setTheme(isDark ? "light" : "dark");
+  });
+
+  // Listen for system preference changes
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", (e) => {
+      if (!localStorage.getItem("theme")) {
+        setTheme(e.matches ? "dark" : "light");
+      }
+    });
+</script>
