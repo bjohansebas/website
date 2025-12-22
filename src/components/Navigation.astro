@@ -2,6 +2,7 @@
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
 import { AtSign, Github, Twitter, Linkedin, Sun, Moon } from "lucide-astro";
+import LanguagePicker from "@/components/LanguagePicker.astro";
 
 const SOCIAL_MEDIA = [
   { name: "Github", href: "https://github.com/bjohansebas", icon: Github },
@@ -63,6 +64,7 @@ const t = useTranslations(lang);
         <Sun class="hidden size-4 dark:block" />
         <Moon class="block size-4 dark:hidden" />
       </button>
+      <LanguagePicker />
     </div>
   </div>
 </div>

@@ -5,6 +5,10 @@ import ExpressLogo from "@/components/icons/logos/express.astro";
 import NodejsLogo from "@/components/icons/logos/nodejs.astro";
 import WebpackLogo from "@/components/icons/logos/webpack.astro";
 import OpenjsLogo from "@/components/icons/logos/openjs.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const PROJECTS = [
   {
@@ -43,7 +47,7 @@ const PROJECTS = [
       <h2
         class="flex items-center gap-x-2 text-lg font-semibold text-foreground"
       >
-        <CodeIcon class="size-5" />Communities I Contribute to
+        <CodeIcon class="size-5" />{t("landing.oss.title")}
       </h2>
       <a
         href="https://github.com/sponsors/bjohansebas"
@@ -61,10 +65,10 @@ const PROJECTS = [
             d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
           ></path>
         </svg>
-        Support
+        {t("landing.oss.support")}
       </a>
     </div>
-    <p>I have been helping these projects in my free time.</p>
+    <p>{t("landing.oss.subtitle")}</p>
   </header>
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
     {
@@ -81,7 +85,7 @@ const PROJECTS = [
                   <Icon class="h-7" />
                 </div>
               </header>
-              <p class="text-xs">View details</p>
+              <p class="text-xs">{t("landing.oss.viewDetails")}</p>
             </article>
           </button>
 
@@ -97,7 +101,7 @@ const PROJECTS = [
 
               <div>
                 <h4 class="mb-2 text-lg font-bold text-foreground">
-                  Contributions:
+                  {t("landing.oss.contributions")}
                 </h4>
                 {contributions && (
                   <p class="text-sm text-muted-foreground">{contributions}</p>
@@ -106,7 +110,7 @@ const PROJECTS = [
 
               <div class="mt-2 flex flex-col gap-1">
                 <span class="text-sm font-medium text-foreground">
-                  View on GitHub:
+                  {t("landing.oss.viewOnGitHub")}
                 </span>
                 <div class="flex flex-wrap gap-2">
                   {orgs.map((org) => (

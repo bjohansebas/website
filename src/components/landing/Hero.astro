@@ -1,5 +1,12 @@
 ---
 import { Image } from "astro:assets";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const description = t("landing.hero.description");
+const parts = description.split(/<highlight>|<\/highlight>/);
 ---
 
 <header class="mt-2 flex flex-col gap-4">
@@ -19,7 +26,7 @@ import { Image } from "astro:assets";
         />
         <div class="flex flex-col">
           <h1 class="font-semibold">Sebastian Beltran</h1>
-          <h2 class="text-muted-foreground">Full-stack Developer</h2>
+          <h2 class="text-muted-foreground">{t("landing.hero.role")}</h2>
         </div>
       </div>
       <a
@@ -34,17 +41,19 @@ import { Image } from "astro:assets";
           <span class="relative top-1.5 h-2 w-2 rounded-full bg-green-500"
           ></span>
         </div>
-        <span class="ml-4">Available for freelance</span>
+        <span class="ml-4">{t("landing.hero.available")}</span>
       </a>
     </div>
     <p class="text-muted-foreground">
-      Hi! I'm Sebastian, a <span class="font-semibold text-primary"
-        >Full-stack developer</span
-      > with experience in web application development. I'm passionate about contributing
-      to and building <span class="font-semibold text-primary"
-        >open-source projects</span
-      >. I love exploring new technologies and finding creative solutions to
-      development challenges.
+      {
+        parts.map((part, index) =>
+          index % 2 === 1 ? (
+            <span class="font-semibold text-primary">{part}</span>
+          ) : (
+            part
+          ),
+        )
+      }
     </p>
   </div>
 </header>

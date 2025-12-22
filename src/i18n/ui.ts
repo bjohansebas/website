@@ -11,6 +11,18 @@ export const LANGUAGES: Record<string, { code: string; name: string }> = {
 
 export const ui = {
   en: {
+    "landing.hero.role": "Full-stack Developer",
+    "landing.hero.available": "Available for freelance",
+    "landing.hero.description":
+      "Hi! I'm Sebastian, a <highlight>Full-stack developer</highlight> with experience in web application development. I'm passionate about contributing to and building <highlight>open-source projects</highlight>. I love exploring new technologies and finding creative solutions to development challenges.",
+    "landing.oss.title": "Communities I Contribute to",
+    "landing.oss.support": "Support",
+    "landing.oss.subtitle":
+      "I have been helping these projects in my free time.",
+    "landing.oss.viewDetails": "View details",
+    "landing.oss.contributions": "Contributions:",
+    "landing.oss.viewOnGitHub": "View on GitHub:",
+    "footer.text": "Building software with ♥ from 🇨🇴 to the world.",
     "hero.a.email.title": "Send e-mail to {name} at {email}",
     "hero.a.phone.title": "Call {name} at {phone}",
     "hero.a.social.title": "Visit {name}'s profile on {network}",
@@ -51,6 +63,18 @@ export const ui = {
       "Press <kbd>Cmd</kbd> + <kbd>K</kbd> to open the command palette.",
   },
   es: {
+    "landing.hero.role": "Desarrollador Full-stack",
+    "landing.hero.available": "Disponible para freelance",
+    "landing.hero.description":
+      "¡Hola! Soy Sebastian, un <highlight>desarrollador Full-stack</highlight> con experiencia en desarrollo de aplicaciones web. Me apasiona contribuir y construir <highlight>proyectos open-source</highlight>. Me encanta explorar nuevas tecnologías y encontrar soluciones creativas a los desafíos del desarrollo.",
+    "landing.oss.title": "Comunidades a las que Contribuyo",
+    "landing.oss.support": "Apoyar",
+    "landing.oss.subtitle":
+      "He estado ayudando a estos proyectos en mi tiempo libre.",
+    "landing.oss.viewDetails": "Ver detalles",
+    "landing.oss.contributions": "Contribuciones:",
+    "landing.oss.viewOnGitHub": "Ver en GitHub:",
+    "footer.text": "Construyendo software con ♥ desde 🇨🇴 para el mundo.",
     "hero.a.email.title":
       "Enviar un correo electrónico a {name} al correo {email}",
     "hero.a.phone.title": "Llamar por teléfono a {name} al número {phone}",
