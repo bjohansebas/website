@@ -6,12 +6,22 @@ import "@fontsource/geist-sans/600.css";
 import "@fontsource/geist-sans/700.css";
 
 interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   class?: string;
 }
 
-const { title, description, class: className } = Astro.props;
+let { title, description, class: className } = Astro.props;
+
+title =
+  title == null
+    ? "Sebastian Beltran - Full-Stack Developer & Open Source Maintainer (Express.js, Node.js, Webpack)"
+    : `${title} | Sebastian Beltran - Full-Stack Developer & Open Source Maintainer (Express.js, Node.js, Webpack)`;
+
+description =
+  description ??
+  "Hi! I'm Sebastian, a Full-stack developer with experience in web application development";
+
 const lang = getLangFromUrl(Astro.url);
 const url = Astro.url.origin;
 ---
