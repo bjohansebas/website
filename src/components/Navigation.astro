@@ -40,7 +40,9 @@ const SUPPORT_LINK = "https://github.com/sponsors/bjohansebas";
 const IS_INDEX = Astro.url.pathname === translatePath("/");
 ---
 
-<div class="sticky top-0 z-50 bg-background/90 px-4 py-3 backdrop-blur-md">
+<div
+  class="no-print sticky top-0 z-50 bg-background/90 px-4 py-3 backdrop-blur-md"
+>
   <div class="mx-auto flex max-w-[75ch] items-center justify-between">
     <!-- Desktop nav -->
     <nav class="hidden items-center gap-1 md:flex">

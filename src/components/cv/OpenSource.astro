@@ -7,7 +7,6 @@ type Props = {
 };
 
 const { oss } = Astro.props;
-console.log(oss);
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
