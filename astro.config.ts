@@ -32,13 +32,12 @@ export default defineConfig({
   },
   prefetch: true,
   output: "server",
-  //@ts-ignore
   adapter: vercel({
     webAnalytics: {
       enabled: true,
     },
   }),
-  site: "https://bjohansebas.vercel.app",
+  site: "https://bjohansebas.me",
   vite: {
     build: {
       cssMinify: "lightningcss",
