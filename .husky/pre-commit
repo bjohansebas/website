@@ -1,1 +1,1 @@
-npx lint-staged
+node --run lint:staged

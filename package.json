@@ -11,6 +11,7 @@
     "preview": "astro preview",
     "check": "oxlint . && prettier --check .",
     "check:fix": "oxlint --fix . && prettier --write .",
+    "lint:staged": "lint-staged",
     "astro": "astro",
     "prepare": "husky"
   },
@@ -36,5 +37,17 @@
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-organize-imports": "4.1.0",
     "prettier-plugin-tailwindcss": "0.6.11"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": ">=20.5.0",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": "10.15.0",
+      "onFail": "error"
+    }
   }
 }
