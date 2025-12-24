@@ -11,7 +11,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<ul class="flex flex-col gap-8">
+<ul class="flex flex-col gap-4">
   {
     education.map(({ institution, startDate, endDate, area }) => {
       let years;
@@ -41,7 +41,7 @@ const t = useTranslations(lang);
                 </h3>
               </div>
 
-              <time class="min-w-24 text-sm text-muted-foreground">
+              <time class="min-w-24 text-right text-sm text-muted-foreground">
                 {years}
               </time>
             </header>

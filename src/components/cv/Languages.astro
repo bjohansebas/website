@@ -8,13 +8,20 @@ type Props = {
 const { languages } = Astro.props;
 ---
 
-<ul class="flex flex-col gap-1">
+<ul class="flex gap-4">
   {
-    languages.map(({ language, fluency }) => (
-      <li class="">
-        <span class="font-semibold">{language}:</span>
-        {fluency}
-      </li>
+    languages.map(({ language, fluency }, idx) => (
+      <>
+        {idx < languages.length && idx > 0 ? (
+          <span class="text-primary" aria-hidden="true">
+            •
+          </span>
+        ) : null}
+        <li class="">
+          <span class="font-semibold">{language}:</span>
+          {fluency}
+        </li>
+      </>
     ))
   }
 </ul>

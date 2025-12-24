@@ -38,18 +38,14 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { basics, education, projects, skills, languages, oss } = Astro.props;
-const { name, label, summary } = basics;
+const { name, summary } = basics;
 
 const t = useTranslations(
   (Astro.currentLocale ?? defaultLang) as typeof defaultLang,
 );
 ---
 
-<Layout
-  title={t("cv.title", { name, label })}
-  description={summary}
-  class="pt-0"
->
+<Layout title={t("cv.title", { name })} description={summary} class="pt-0">
   <main class="mx-auto mt-8 w-full max-w-[75ch] p-16 pt-0 max-[700px]:p-8">
     <Section>
       <Hero basics={basics} />
@@ -66,15 +62,15 @@ const t = useTranslations(
     <Section title={t("cv.oss")}>
       <OpenSource oss={oss} />
     </Section>
-    <Section title={t("cv.projects")}><Projects projects={projects} /></Section>
-    <div class="grid grid-cols-3 gap-2 max-sm:grid-cols-1">
-      <Section title={t("cv.language")}>
-        <Languages languages={languages} />
-      </Section>
-      <Section title={t("cv.skills")} class="col-span-2"
-        ><Skills skills={skills} /></Section
-      >
-    </div>
+    <Section title={t("cv.projects")}>
+      <Projects projects={projects} />
+    </Section>
+    <Section title={t("cv.language")}>
+      <Languages languages={languages} />
+    </Section>
+    <Section title={t("cv.skills")} class="col-span-2">
+      <Skills skills={skills} />
+    </Section>
   </main>
   <KeyboardManager basics={basics} />
 </Layout>

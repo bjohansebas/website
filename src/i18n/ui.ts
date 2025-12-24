@@ -45,8 +45,7 @@ export const ui = {
     "projects.see.repo": "See source code of project {name}",
     "skills.title": "Skills",
     "languagepicker.a.title": "Change to spanish version",
-    "cv.title": ({ name, label }: { name: string; label: string }) =>
-      `${name}'s CV - ${label}`,
+    "cv.title": ({ name }: { name: string }) => `${name}'s CV`,
     "cv.about": "About me",
     "cv.experience": "Work Experience",
     "cv.education": "Education",
@@ -109,8 +108,7 @@ export const ui = {
     "projects.see.repo": "Ver código fuente del proyecto {name}",
     "skills.title": "Habilidades",
     "languagepicker.a.title": "Cambiar a versión en inglés",
-    "cv.title": ({ name, label }: { name: string; label: string }) =>
-      `CV de ${name} - ${label}`,
+    "cv.title": ({ name }: { name: string }) => `Currículum de ${name}`,
     "cv.about": "Sobre mí",
     "cv.experience": "Experiencia laboral",
     "cv.oss": "Open Source",

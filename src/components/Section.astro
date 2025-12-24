@@ -8,6 +8,13 @@ const { title, class: className } = Astro.props;
     className,
   ]}
 >
-  {title && <h2 class="mb-2 text-2xl font-bold">{title}</h2>}
+  {
+    title && (
+      <div class="mb-2 flex items-center gap-4">
+        <h2 class="text-2xl font-bold">{title}</h2>
+        <span class="h-px flex-1 bg-primary" />
+      </div>
+    )
+  }
   <slot />
 </section>
