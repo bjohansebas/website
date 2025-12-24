@@ -4,6 +4,7 @@ import {
   Github as GitHub,
   Linkedin as LinkedIn,
   Mail,
+  Link,
   Network,
 } from "lucide-astro";
 import WorldMap from "@ui/icons/world-map.astro";
@@ -16,12 +17,13 @@ type Props = {
 };
 
 const { name, label, location, profiles, email } = Astro.props.basics;
-const { city, region } = location;
+const { city, countryCode } = location;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const SOCIAL_ICONS: SocialIcon = {
+  Website: Link,
   GitHub,
   LinkedIn,
   X,
@@ -36,15 +38,15 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
 const links = [
   ...((email && [
     {
-      network: "bjohansebas@gmail.com",
+      username: "bjohansebas@gmail.com",
       href: `mailto:${email}`,
       title: t("see.email", { name, email }),
       icon: "Mail",
     },
   ]) ||
     []),
-  ...profiles.map(({ network, url }) => ({
-    network,
+  ...profiles.map(({ network, url, username }) => ({
+    username,
     href: url,
     title: t("see.network", { name, network }),
     icon: network,
@@ -59,16 +61,13 @@ const links = [
       {label}
     </h2>
 
-    <footer class="print">
-      {printInfo}
-    </footer>
-    <footer class="no-print">
+    <footer>
       <span class="flex items-center gap-2">
         <WorldMap class="h-4 w-4" />
-        {city}, {region}
+        {city}, {countryCode}
       </span>
       {
-        links.map(({ href, title, icon, network }) => {
+        links.map(({ href, title, icon, username }) => {
           const Icon = SOCIAL_ICONS[icon];
 
           return (
@@ -80,7 +79,7 @@ const links = [
               class="w-fit gap-2 hover:text-primary"
             >
               <Icon class="h-4 w-4" />
-              {network}
+              {username}
             </a>
           );
         })
@@ -91,7 +90,7 @@ const links = [
 
 <style>
   footer {
-    font-size: 1rem;
+    font-size: 0.75rem;
     display: flex;
     gap: 8px;
     margin-top: 8px;

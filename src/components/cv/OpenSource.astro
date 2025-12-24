@@ -17,7 +17,7 @@ const t = useTranslations(lang);
       return (
         <li class="">
           <article class="flex h-full flex-col rounded-lg border border-solid border-border bg-card/70 p-4">
-            <header class="mb-1 flex items-center gap-2">
+            <header class="mb-2 flex items-center gap-2">
               <h3 class="flex items-center gap-1">
                 <a
                   href={url}
@@ -28,7 +28,7 @@ const t = useTranslations(lang);
                 </a>
               </h3>
             </header>
-            <div class="mb-4 text-xs text-muted-foreground">
+            <div class="mb-4 text-sm text-muted-foreground">
               {description
                 .split(/\n\s*\n/) // paragraphs on empty line
                 .map((para, pIdx) => (

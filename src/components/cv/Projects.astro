@@ -18,7 +18,7 @@ const t = useTranslations(lang);
       return (
         <li class="">
           <article class="flex h-full flex-col rounded-lg border border-solid border-border bg-card/70 p-4">
-            <header class="mb-1 flex items-center gap-2">
+            <header class="mb-2 flex items-center gap-2">
               <h3 class="flex items-center gap-1">
                 <a
                   href={url}
@@ -39,7 +39,7 @@ const t = useTranslations(lang);
                 </a>
               )}
             </header>
-            <p class="mb-4 text-xs text-muted-foreground">{description}</p>
+            <p class="mb-4 text-sm text-muted-foreground">{description}</p>
             <footer class="flex flex-wrap gap-1 text-xs">
               {highlights.map((highlight) => {
                 return (
