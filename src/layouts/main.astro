@@ -54,6 +54,14 @@ const url = Astro.url.origin;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="" />
+
+    <link
+      rel="sitemap"
+      type="application/xml"
+      title="Sitemap"
+      href="/sitemap-index.xml"
+    />
+
     <script is:inline>
       (function () {
         const theme =
