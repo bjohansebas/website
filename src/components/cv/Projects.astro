@@ -18,7 +18,7 @@ const t = useTranslations(lang);
       return (
         <li class="">
           <article class="flex h-full flex-col rounded-lg border border-solid border-border bg-card/70 p-4">
-            <header class="mb-1 flex items-center gap-2">
+            <header class="mb-2 flex items-center gap-2">
               <h3 class="flex items-center gap-1">
                 <a
                   href={url}
@@ -27,11 +27,6 @@ const t = useTranslations(lang);
                 >
                   {name}
                 </a>
-                {isActive && (
-                  <span class="animate-pulse text-green-500 print:animate-none">
-                    •
-                  </span>
-                )}
               </h3>
               {github && (
                 <a
@@ -44,7 +39,7 @@ const t = useTranslations(lang);
                 </a>
               )}
             </header>
-            <p class="mb-4 text-xs text-muted-foreground">{description}</p>
+            <p class="mb-4 text-sm text-muted-foreground">{description}</p>
             <footer class="flex flex-wrap gap-1 text-xs">
               {highlights.map((highlight) => {
                 return (
@@ -77,6 +72,20 @@ const t = useTranslations(lang);
   @media (width <= 700px) {
     ul {
       margin-inline: 0px;
+    }
+  }
+
+  @media print {
+    article {
+      border: none;
+      padding-block: 0;
+      background-color: transparent;
+    }
+
+    footer span {
+      background-color: hsl(var(--muted)) !important;
+      color: black;
+      border: 1px solid hsl(var(--primary));
     }
   }
 </style>

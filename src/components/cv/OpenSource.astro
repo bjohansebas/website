@@ -11,13 +11,13 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<ul class="mx-[-16px] grid gap-4">
+<ul class="mx-[-16px] flex flex-col gap-4">
   {
     oss.map(({ url, description, highlights, name }) => {
       return (
         <li class="">
           <article class="flex h-full flex-col rounded-lg border border-solid border-border bg-card/70 p-4">
-            <header class="mb-1 flex items-center gap-2">
+            <header class="mb-2 flex items-center gap-2">
               <h3 class="flex items-center gap-1">
                 <a
                   href={url}
@@ -28,7 +28,20 @@ const t = useTranslations(lang);
                 </a>
               </h3>
             </header>
-            <p class="mb-4 text-xs text-muted-foreground">{description}</p>
+            <div class="mb-4 flex flex-col flex-wrap gap-2 text-sm text-muted-foreground">
+              {description
+                .split(/\n\s*\n/) // paragraphs on empty line
+                .map((para, pIdx) => (
+                  <p>
+                    {para.split(/\n/).map((line, lIdx) => (
+                      <>
+                        {lIdx > 0 ? <br /> : null}
+                        {line}
+                      </>
+                    ))}
+                  </p>
+                ))}
+            </div>
             <footer class="flex flex-wrap gap-1 text-xs">
               {highlights.map((highlight) => {
                 return (
@@ -61,6 +74,20 @@ const t = useTranslations(lang);
   @media (width <= 700px) {
     ul {
       margin-inline: 0px;
+    }
+  }
+
+  @media print {
+    article {
+      border: none;
+      padding-block: 0;
+      background-color: transparent;
+    }
+
+    footer span {
+      background-color: hsl(var(--muted)) !important;
+      color: black;
+      border: 1px solid hsl(var(--primary));
     }
   }
 </style>

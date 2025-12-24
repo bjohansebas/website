@@ -11,13 +11,17 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<ul class="flex flex-col gap-8">
+<ul class="flex flex-col gap-4">
   {
     education.map(({ institution, startDate, endDate, area }) => {
       let years;
       if (startDate == null) {
-        const formatter = new Intl.DateTimeFormat(lang, { month: "long" });
-        years = `${formatter.format(new Date(endDate))} ${new Date(endDate).getFullYear()}`;
+        if (endDate != null) {
+          const formatter = new Intl.DateTimeFormat(lang, { month: "long" });
+          years = `${formatter.format(new Date(endDate))} ${new Date(endDate).getFullYear()}`;
+        } else {
+          years = t("common.present");
+        }
       } else {
         const startYear = new Date(startDate).getFullYear();
         const endYear =
@@ -37,7 +41,7 @@ const t = useTranslations(lang);
                 </h3>
               </div>
 
-              <time class="min-w-24 text-sm text-muted-foreground">
+              <time class="min-w-24 text-right text-sm text-muted-foreground">
                 {years}
               </time>
             </header>

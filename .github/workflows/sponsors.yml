@@ -19,13 +19,10 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Fetch Sponsors Data
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run fetch:sponsors
+        run: node --run fetch:sponsors
 
       - name: Create Pull Request
         uses: gr2m/create-or-update-pull-request-action@v1

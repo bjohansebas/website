@@ -41,7 +41,7 @@ const EducationSchema = z.array(
     area: z.string(),
     studyType: z.string(),
     startDate: z.string().nullable(),
-    endDate: z.string(),
+    endDate: z.string().nullable(),
   }),
 );
 

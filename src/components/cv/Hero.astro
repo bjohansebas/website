@@ -4,9 +4,9 @@ import {
   Github as GitHub,
   Linkedin as LinkedIn,
   Mail,
-  Network,
+  Link,
+  Globe,
 } from "lucide-astro";
-import WorldMap from "@ui/icons/world-map.astro";
 import type { SocialIcon } from "@/types";
 import type { CollectionEntry } from "astro:content";
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
@@ -16,35 +16,31 @@ type Props = {
 };
 
 const { name, label, location, profiles, email } = Astro.props.basics;
-const { city, region } = location;
+const { city, countryCode } = location;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const SOCIAL_ICONS: SocialIcon = {
+  Website: Link,
   GitHub,
   LinkedIn,
   X,
   Mail,
 };
 
-const linkedInfo = profiles.find(({ network }) => network === "LinkedIn");
-const linkedUrl = linkedInfo?.url;
-
-const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
-
 const links = [
   ...((email && [
     {
-      network: "bjohansebas@gmail.com",
+      username: "bjohansebas@gmail.com",
       href: `mailto:${email}`,
       title: t("see.email", { name, email }),
       icon: "Mail",
     },
   ]) ||
     []),
-  ...profiles.map(({ network, url }) => ({
-    network,
+  ...profiles.map(({ network, url, username }) => ({
+    username,
     href: url,
     title: t("see.network", { name, network }),
     icon: network,
@@ -54,21 +50,20 @@ const links = [
 
 <div class="flex flex-col-reverse items-center justify-between gap-4">
   <div class="flex flex-col items-center justify-center gap-2 text-center">
-    <h1 class="text-2xl font-semibold">{name}</h1>
-    <h2 class="text-balance text-lg font-medium text-muted-foreground">
-      {label}
-    </h2>
+    <div class="flex flex-col items-center justify-center">
+      <h1 class="text-2xl font-semibold">{name}</h1>
+      <h2 class="text-balance text-lg font-medium text-muted-foreground">
+        {label}
+      </h2>
+    </div>
 
-    <footer class="print">
-      {printInfo}
-    </footer>
-    <footer class="no-print">
+    <footer>
       <span class="flex items-center gap-2">
-        <WorldMap class="h-4 w-4" />
-        {city}, {region}
+        <Globe class="icon h-4 w-4" />
+        {city}, {countryCode}
       </span>
       {
-        links.map(({ href, title, icon, network }) => {
+        links.map(({ href, title, icon, username }) => {
           const Icon = SOCIAL_ICONS[icon];
 
           return (
@@ -79,8 +74,8 @@ const links = [
               rel="noopener noreferrer"
               class="w-fit gap-2 hover:text-primary"
             >
-              <Icon class="h-4 w-4" />
-              {network}
+              <Icon class="icon h-4 w-4" />
+              {username}
             </a>
           );
         })
@@ -91,9 +86,11 @@ const links = [
 
 <style>
   footer {
-    font-size: 1rem;
+    font-size: 0.75rem;
     display: flex;
     gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
     margin-top: 8px;
   }
 
@@ -103,5 +100,11 @@ const links = [
     justify-content: center;
     padding: 4px;
     transition: all 0.3s ease;
+  }
+
+  @media print {
+    .icon {
+      @apply text-primary;
+    }
   }
 </style>
