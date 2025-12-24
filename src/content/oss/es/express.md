@@ -6,7 +6,7 @@ Mi recorrido como mantenedor de Express comenzó en agosto de 2024, cuando envi�
 
 A lo largo de este camino, he asumido distintos roles y responsabilidades dentro de varios equipos, siempre con el objetivo de fortalecer el proyecto, mejorar la experiencia de los usuarios y garantizar la sostenibilidad de Express a largo plazo.
 
-### Equipo de Documentación
+## Equipo de Documentación
 
 - El **5 de agosto de 2024** me uní al equipo de documentación como contribuidor regular, revisando pull requests y enviando mejoras tanto en el diseño como en el contenido - [expressjs/expressjs.com#1506](https://github.com/expressjs/expressjs.com/issues/1506#issuecomment-2269849620).
 - El **20 de octubre de 2024** me convertí en [**capitán del equipo de documentación**](https://github.com/expressjs/discussions/blob/HEAD/docs/GOVERNANCE.md#project-captains), liderando los esfuerzos para mejorar y mantener actualizada la documentación oficial de Express - [expressjs/expressjs.com#1506](https://github.com/expressjs/expressjs.com/issues/1506#issuecomment-2425173319).
@@ -15,7 +15,7 @@ A lo largo de este camino, he asumido distintos roles y responsabilidades dentro
 - Trabajo activamente en el **rediseño y reconstrucción del sitio web oficial de Express** (expressjs/expressjs.com#1500), con el objetivo de ofrecer una documentación más moderna, accesible y fácil de usar - [expressjs/expressjs.com#1787](https://github.com/expressjs/expressjs.com/issues/1787) y [expressjs/expressjs.com#2002](https://github.com/expressjs/expressjs.com/discussions/2002)
 - Mantengo el **día a día de expressjs.com**, asegurando que el contenido esté actualizado y que la experiencia de usuario sea la mejor posible.
 
-### Equipo de Seguridad
+## Equipo de Seguridad
 
 - Me uní al **equipo de seguridad el 17 de febrero de 2025**, con el objetivo de ayudar a mejorar las prácticas internas del proyecto - [expressjs/security-wg#42](https://github.com/expressjs/security-wg/pull/42)
 - He impulsado varias iniciativas clave para fortalecer la seguridad de Express, entre ellas:
@@ -28,7 +28,7 @@ A lo largo de este camino, he asumido distintos roles y responsabilidades dentro
   - https://github.com/advisories/GHSA-wqch-xfxh-vrr4
   - https://github.com/advisories/GHSA-g5hg-p3ph-g8qg
 
-### Equipo de Triage
+## Equipo de Triage
 
 El equipo de triage se encarga de revisar, clasificar los issues y pull requests entrantes para asegurar que sean atendidos de forma oportuna y eficiente.
 
@@ -47,7 +47,7 @@ El equipo de triage se encarga de revisar, clasificar los issues y pull requests
 - Nominaciones que he realizado para nuevos miembros del equipo de triage:
   - [@Phillip9587](https://github.com/expressjs/express/pull/6276)
 
-### Iniciativas Técnicas
+## Iniciativas Técnicas
 
 - Lideré el desarrollo de la **versión 1.8.0 del paquete `compression`**, que incluyó soporte para **Brotli** y la adopción de APIs públicas de Node.js - [expressjs/compression#212](https://github.com/expressjs/compression/pull/212)
 - Asumí el liderazgo en el desarrollo de **iconv-lite**, además de colaborar para que Express adopte este paquete bajo una gobernanza sólida y sostenible.
@@ -55,7 +55,7 @@ El equipo de triage se encarga de revisar, clasificar los issues y pull requests
 - Participo en la investigación para **eliminar el monkey patching en Express v5** - [expressjs/express#6669](https://github.com/expressjs/express/issues/6669) y [nodejs/web-server-frameworks#127](https://github.com/nodejs/web-server-frameworks/issues/127).
 - Colaboro en los esfuerzos para **habilitar HTTP/2 en Express** - [expressjs/discussions#407](https://github.com/expressjs/discussions/issues/407).
 
-### Equipo de Performance
+## Equipo de Performance
 
 Este equipo se encarga de monitorear y mejorar el rendimiento de los paquetes mantenidos por Express.
 
@@ -63,7 +63,7 @@ Este equipo se encarga de monitorear y mejorar el rendimiento de los paquetes ma
 - He participado activamente en las reuniones programadas.
 - Contribuyo en discusiones técnicas enfocadas en mejorar el rendimiento y la eficiencia de los paquetes del ecosistema Express.
 
-### Equipo de TypeScript
+## Equipo de TypeScript
 
 Este es un equipo relativamente nuevo, enfocado en mantener y mejorar los tipos de TypeScript de Express y sus paquetes relacionados. El objetivo principal es **integrar los tipos de TypeScript directamente en los paquetes principales de Express**, mejorando la experiencia de desarrollo y reduciendo la dependencia de definiciones externas.
 
