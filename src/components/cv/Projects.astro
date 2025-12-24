@@ -74,4 +74,18 @@ const t = useTranslations(lang);
       margin-inline: 0px;
     }
   }
+
+  @media print {
+    article {
+      border: none;
+      padding-block: 0;
+      background-color: transparent;
+    }
+
+    footer span {
+      background-color: hsl(var(--muted)) !important;
+      color: black;
+      border: 1px solid hsl(var(--primary));
+    }
+  }
 </style>
