@@ -16,8 +16,12 @@ const t = useTranslations(lang);
     education.map(({ institution, startDate, endDate, area }) => {
       let years;
       if (startDate == null) {
-        const formatter = new Intl.DateTimeFormat(lang, { month: "long" });
-        years = `${formatter.format(new Date(endDate))} ${new Date(endDate).getFullYear()}`;
+        if (endDate != null) {
+          const formatter = new Intl.DateTimeFormat(lang, { month: "long" });
+          years = `${formatter.format(new Date(endDate))} ${new Date(endDate).getFullYear()}`;
+        } else {
+          years = t("common.present");
+        }
       } else {
         const startYear = new Date(startDate).getFullYear();
         const endYear =

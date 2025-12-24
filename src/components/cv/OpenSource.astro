@@ -11,7 +11,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<ul class="mx-[-16px] grid gap-4">
+<ul class="mx-[-16px] flex flex-col gap-4">
   {
     oss.map(({ url, description, highlights, name }) => {
       return (
@@ -28,7 +28,20 @@ const t = useTranslations(lang);
                 </a>
               </h3>
             </header>
-            <p class="mb-4 text-xs text-muted-foreground">{description}</p>
+            <div class="mb-4 text-xs text-muted-foreground">
+              {description
+                .split(/\n\s*\n/) // paragraphs on empty line
+                .map((para, pIdx) => (
+                  <p class="mb-2">
+                    {para.split(/\n/).map((line, lIdx) => (
+                      <>
+                        {lIdx > 0 ? <br /> : null}
+                        {line}
+                      </>
+                    ))}
+                  </p>
+                ))}
+            </div>
             <footer class="flex flex-wrap gap-1 text-xs">
               {highlights.map((highlight) => {
                 return (

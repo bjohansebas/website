@@ -3,8 +3,8 @@
     "name": "Sebastian Beltran",
     "label": "Desarrollador Full Stack",
     "email": "bjohansebas@gmail.com",
-    "url": "https://dub.sh/bjohansebas",
-    "summary": "Como desarrollador full stack, soy capaz de crear nuevos productos desde cero y mantenerlos siguiendo las mejores prácticas. Principalmente trabajo con TypeScript, React, Next.js y Supabase.",
+    "url": "https://bjohansebas.me",
+    "summary": "Como desarrollador Full Stack, me especializo en la creación de productos digitales desde cero, así como en su mantenimiento y evolución, aplicando siempre las mejores prácticas para garantizar seguridad, rendimiento y escalabilidad. Trabajo principalmente con TypeScript, React, Next.js, Express.js y Supabase. Además, en mi tiempo libre participo activamente en proyectos de código abierto, donde colaboro con código y lidero comunidades para impulsar su desarrollo.",
     "location": {
       "city": "Cundinamarca",
       "countryCode": "CO",
@@ -31,26 +31,57 @@
   "work": [],
   "oss": [
     {
-      "name": "Express",
+      "name": "Express.js",
       "url": "https://expressjs.com",
-      "description": "I assist in the maintenance of their website, improving accessibility, design, and documentation. Additionally, I help with compression maintenance and in creating codemods for the new version of Express.",
+      "description": "Lidero el rediseño y desarrollo del sitio web de Express.js, coordinando la mejora de la accesibilidad, el diseño y la documentación. Además, participé activamente en el mantenimiento de paquetes clave del ecosistema, como express y compression, contribuyendo tanto con mejoras técnicas como con el fortalecimiento y crecimiento de la comunidad de Express.\n\n• Lidero el rediseño completo del sitio web de Express.js, migrándolo de Jekyll a Astro para mejorar el diseño, el rendimiento y la experiencia de desarrollo.\n• Implementé soporte para Brotli en el paquete compression, optimizando la compresión y el rendimiento de las aplicaciones Express.js.\n• Lideré y colaboré en la revisión y resolución de reportes de seguridad en los paquetes mantenidos por Express.js.",
       "highlights": [
         "Open Source",
         "JavaScript & TypeScript",
         "Documentation",
         "Accessibility",
+        "Security",
         "Design"
+      ]
+    },
+    {
+      "name": "OpenJS Foundation",
+      "url": "https://openjsf.org",
+      "description": "Como miembro activo de la OpenJS Foundation, contribuyo a la gobernanza técnica de proyectos clave como Express.js, Node.js y otros proyectos de la fundación. Participo activamente en iniciativas orientadas a fortalecer la sostenibilidad, la integridad y el crecimiento del ecosistema open source.\n\n• Colaboré con el grupo de sostenibilidad para facilitar una entrevista con el equipo de Astro, como parte de las iniciativas para apoyar y fortalecer los proyectos de la fundación.\n• Participo en discusiones estratégicas para reforzar la integridad técnica y organizativa de los proyectos mantenidos por la OpenJS Foundation.",
+      "highlights": [
+        "Open Source",
+        "JavaScript & TypeScript",
+        "Community Collaboration",
+        "Security"
+      ]
+    },
+    {
+      "name": "Node.js",
+      "url": "https://nodejs.org",
+      "description": "Contribuidor activo al sitio web de Node.js, participando en el mantenimiento de su diseño y estructura, y liderando el Package Maintenance Working Group. Partipando activamente en colaboración y en la modernización del ecosistema y en la mejora continua de la seguridad y eficiencia de Node.js.\n\n• Lideré la migración del sitio web de Node.js de Tailwind CSS v3 a v4, asegurando que el proyecto se mantuviera actualizado con las últimas tecnologías.\n• Colaboré en la eliminación de funcionalidades deprecadas en el core de Node.js, contribuyendo a un entorno más seguro, mantenible y eficiente.",
+      "highlights": [
+        "Open Source",
+        "JavaScript & TypeScript",
+        "Website",
+        "Package Maintenance"
       ]
     }
   ],
   "education": [
     {
+      "institution": "Universidad Distrital Francisco José de Caldas",
+      "url": "https://www.udistrital.edu.co/inicio",
+      "area": "Ingeniería Electronica",
+      "studyType": "Bachelor",
+      "startDate": "2025-02-01",
+      "endDate": null
+    },
+    {
       "institution": "Platzi",
       "url": "https://platzi.com",
       "area": "Full Stack Developer con JavaScript",
       "studyType": "Bachelor",
-      "startDate": null,
-      "endDate": "2022-06-01"
+      "startDate": "2021-09-01",
+      "endDate": "2024-06-01"
     }
   ],
   "skills": [
