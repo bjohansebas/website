@@ -1,8 +1,11 @@
 ---
 export const prerender = true;
+import Layout from "@/layouts/main.astro";
+import Sponsors from "@ui/landing/Sponsors.astro";
+
 import { getCollection, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
-import { defaultLang, showDefaultLang, useTranslations } from "@/i18n/utils";
+import { defaultLang, showDefaultLang } from "@/i18n/utils";
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection("oss");
@@ -36,5 +39,8 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<h1>{post.data.title}</h1>
-<Content />
+<Layout title={post.data.title} description={post.data.description}>
+  <h1>{post.data.title}</h1>
+  <Content />
+  <Sponsors />
+</Layout>
