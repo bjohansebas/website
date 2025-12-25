@@ -4,12 +4,41 @@ import {
   getRouteFromUrl,
   useTranslatedPath,
   getLangFromUrl,
+  defaultLang,
+  showDefaultLang,
 } from "../i18n/utils";
 import { LANGUAGES } from "../i18n/ui";
 
 const route = getRouteFromUrl(Astro.url);
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
+const pathname = Astro.url.pathname;
+
+function buildLocalePath(targetLang: string) {
+  // If we have a named route (like `cv`) prefer translated route
+  if (route) return translatePath(`/${route}`, targetLang);
+
+  // Preserve full pathname while swapping language prefix
+  const current = lang;
+  const langPrefix = `/${current}/`;
+  const langOnly = `/${current}`;
+
+  let pathWithoutLang = pathname;
+  if (pathname === langOnly) {
+    pathWithoutLang = "/";
+  } else if (pathname.startsWith(langPrefix)) {
+    pathWithoutLang = pathname.slice(langOnly.length);
+  }
+
+  // If the target is default and default is hidden, return path without prefix
+  if (!showDefaultLang && targetLang === defaultLang) {
+    return pathWithoutLang === "" ? "/" : pathWithoutLang;
+  }
+
+  // Ensure single leading slash for the rest of the path
+  const rest = pathWithoutLang === "/" ? "" : pathWithoutLang;
+  return `/${targetLang}${rest}`;
+}
 
 const currentLocale = LANGUAGES[lang];
 const otherLocales = Object.values(LANGUAGES).filter(
@@ -37,7 +66,7 @@ const otherLocales = Object.values(LANGUAGES).filter(
       otherLocales.map((locale) => (
         <li>
           <a
-            href={translatePath(`/${route ? route : ""}`, locale.code)}
+            href={buildLocalePath(locale.code)}
             class="block rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-all duration-300 hover:bg-accent hover:text-primary"
           >
             {locale.code.toUpperCase()}

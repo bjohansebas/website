@@ -1,0 +1,91 @@
+---
+export const prerender = true;
+import Layout from "@/layouts/main.astro";
+import Sponsors from "@ui/landing/Sponsors.astro";
+
+import { getCollection, render } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import { defaultLang, showDefaultLang } from "@/i18n/utils";
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection("oss");
+
+  const paths = posts.map((post) => {
+    const parts = post.id.split("/");
+    let lang: string;
+    let id: string;
+
+    if (parts.length > 1) {
+      lang = parts[0];
+      id = parts.slice(1).join("/");
+    } else {
+      lang = defaultLang;
+      id = parts[0];
+    }
+
+    const realLang =
+      defaultLang === lang && !showDefaultLang ? undefined : lang;
+
+    return {
+      params: { lang: realLang, id },
+      props: { post },
+    };
+  });
+
+  return paths;
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout
+  class="mx-auto mt-8 h-full max-w-[75ch] px-2"
+  title={post.data.title}
+  description={post.data.description}
+>
+  <h1>{post.data.title}</h1>
+  <main class="my-8 flex flex-col gap-y-4">
+    <Content />
+    <Sponsors />
+  </main>
+</Layout>
+
+<style is:inline>
+  h1 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  strong {
+    color: hsl(var(--primary));
+  }
+
+  main a {
+    color: hsl(var(--muted-foreground));
+    text-decoration: underline;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  main ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    list-style-type: disc;
+    margin-left: 1.5rem;
+  }
+
+  main li {
+    list-style: circle;
+    margin-bottom: 0.5rem;
+  }
+
+  main li > ul {
+    margin-top: 0.5rem;
+  }
+</style>

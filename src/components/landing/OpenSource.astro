@@ -1,42 +1,39 @@
 ---
 import CodeIcon from "@/components/icons/Code.astro";
-import Modal from "@/components/Modal.astro";
 import ExpressLogo from "@/components/icons/logos/express.astro";
 import NodejsLogo from "@/components/icons/logos/nodejs.astro";
 import WebpackLogo from "@/components/icons/logos/webpack.astro";
 import OpenjsLogo from "@/components/icons/logos/openjs.astro";
-import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import {
+  getLangFromUrl,
+  useTranslations,
+  useTranslatedPath,
+} from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 
 const PROJECTS = [
   {
     title: "Express",
+    slug: "express",
     icon: ExpressLogo,
-    orgs: ["expressjs", "pillarjs", "jshttp"],
-    contributions:
-      "Website Team Captain, Security & Triage Team member, TypeScript WG co-lead, Performance WG member. Leading website redesign, handling vulnerability reports, and driving initiatives like iconv-lite adoption and HTTP/2 support.",
   },
   {
     title: "Node.js",
+    slug: "nodejs",
     icon: NodejsLogo,
-    orgs: ["nodejs"],
-    contributions:
-      "Website Team contributor, Package Maintenance & Triage Team member. Migrated Tailwind 3 to 4, created the Node.js partners page.",
   },
   {
     title: "Webpack",
+    slug: "webpack",
     icon: WebpackLogo,
-    orgs: ["webpack"],
-    contributions: "Security Team member. Helping improve security practices.",
   },
   {
     title: "OpenJS Foundation",
+    slug: "openjsf",
     icon: OpenjsLogo,
-    orgs: ["openjs-foundation"],
-    contributions:
-      "Cross Project Council (CPC) member. Contributing to the sustainability group and helping coordinate interviews with projects like Astro.",
   },
 ];
 ---
@@ -72,13 +69,9 @@ const PROJECTS = [
   </header>
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
     {
-      PROJECTS.map(({ title, icon: Icon, orgs, contributions }, index) => (
-        <>
-          <button
-            type="button"
-            data-open-modal={`modal-${index}`}
-            class="text-center"
-          >
+      PROJECTS.map(({ icon: Icon, slug }) => {
+        return (
+          <a href={`${translatePath("/oss")}/${slug}`} class="text-center">
             <article class="flex h-full w-full cursor-pointer flex-col justify-center gap-2 rounded-2xl border bg-card px-4 py-4 transition-colors hover:border-primary">
               <header class="flex items-center justify-center gap-3">
                 <div class="flex w-full justify-center">
@@ -87,74 +80,9 @@ const PROJECTS = [
               </header>
               <p class="text-xs">{t("landing.oss.viewDetails")}</p>
             </article>
-          </button>
-
-          <Modal id={`modal-${index}`}>
-            <div class="flex flex-col gap-4">
-              <header class="flex items-center gap-3">
-                {Icon ? (
-                  <Icon class="h-8" />
-                ) : (
-                  <h3 class="text-xl font-semibold text-foreground">{title}</h3>
-                )}
-              </header>
-
-              <div>
-                <h4 class="mb-2 text-lg font-bold text-foreground">
-                  {t("landing.oss.contributions")}
-                </h4>
-                {contributions && (
-                  <p class="text-sm text-muted-foreground">{contributions}</p>
-                )}
-              </div>
-
-              <div class="mt-2 flex flex-col gap-1">
-                <span class="text-sm font-medium text-foreground">
-                  {t("landing.oss.viewOnGitHub")}
-                </span>
-                <div class="flex flex-wrap gap-2">
-                  {orgs.map((org) => (
-                    <a
-                      href={`https://github.com/search?q=org%3A${org}+involves%3Abjohansebas&type=issues`}
-                      target="_blank"
-                      class="inline-flex items-center gap-1 text-sm text-primary hover:underline"
-                    >
-                      {org}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                        <polyline points="15 3 21 3 21 9" />
-                        <line x1="10" x2="21" y1="14" y2="3" />
-                      </svg>
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </Modal>
-        </>
-      ))
+          </a>
+        );
+      })
     }
   </div>
 </section>
-
-<script>
-  document.querySelectorAll("[data-open-modal]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const modalId = button.getAttribute("data-open-modal");
-      const modal = document.getElementById(modalId!) as HTMLDialogElement;
-      if (modal) {
-        modal.showModal();
-      }
-    });
-  });
-</script>
