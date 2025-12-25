@@ -151,10 +151,10 @@ export const ui = {
 export const routes = {
   en: {
     cv: "cv",
-    oss: "oss",
+    communities: "communities",
   },
   es: {
     cv: "cv",
-    oss: "oss",
+    communities: "communities",
   },
 };

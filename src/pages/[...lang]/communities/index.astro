@@ -19,8 +19,6 @@ import WebpackLogo from "@/components/icons/logos/webpack.astro";
 import OpenjsLogo from "@/components/icons/logos/openjs.astro";
 
 export const getStaticPaths = (async () => {
-  // Generate a path for the root /oss (no prefix) and for each supported
-  // non-default language prefix so the page is available localized.
   const langs = Object.keys(LANGUAGES);
 
   const paths = langs.map((l) => {
@@ -30,7 +28,6 @@ export const getStaticPaths = (async () => {
     return { params: { lang: l } };
   });
 
-  // Ensure unique paths
   const unique = Array.from(
     new Map(paths.map((p) => [JSON.stringify(p), p])).values(),
   );
@@ -72,7 +69,11 @@ const items = posts
   <main class="my-8 flex flex-col gap-y-4">
     <p class="text-muted-foreground">{t("landing.oss.detailedIntro")}</p>
 
-    <ProjectsGrid items={items} basePath="/oss" translatePath={translatePath} />
+    <ProjectsGrid
+      items={items}
+      basePath="/communities"
+      translatePath={translatePath}
+    />
   </main>
 </Layout>
 
