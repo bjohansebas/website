@@ -12,7 +12,7 @@ A lo largo de este camino, he asumido distintos roles y responsabilidades dentro
 - El **20 de octubre de 2024** me convertí en [**capitán del equipo de documentación**](https://github.com/expressjs/discussions/blob/HEAD/docs/GOVERNANCE.md#project-captains), liderando los esfuerzos para mejorar y mantener actualizada la documentación oficial de Express - [expressjs/expressjs.com#1506](https://github.com/expressjs/expressjs.com/issues/1506#issuecomment-2425173319).
 - Lideré y colaboré con otros miembros del equipo en la **integración con Crowdin**, con el objetivo de mejorar la experiencia de traducción y mantener la documentación actualizada en múltiples idiomas - [expressjs/expressjs.com#1676](https://github.com/expressjs/expressjs.com/issues/1676).
 - Actué como representante en conversaciones para un posible patrocinio con Scrimba, que lamentablemente no pudo concretarse - [expressjs/expressjs.com#2005](https://github.com/expressjs/expressjs.com/discussions/2005)
-- Trabajo activamente en el **rediseño y reconstrucción del sitio web oficial de Express** (expressjs/expressjs.com#1500), con el objetivo de ofrecer una documentación más moderna, accesible y fácil de usar - [expressjs/expressjs.com#1787](https://github.com/expressjs/expressjs.com/issues/1787) y [expressjs/expressjs.com#2002](https://github.com/expressjs/expressjs.com/discussions/2002)
+- Trabajo activamente en el **rediseño y reconstrucción del sitio web oficial de Express**, con el objetivo de ofrecer una documentación más moderna, accesible y fácil de usar - [expressjs/expressjs.com#1787](https://github.com/expressjs/expressjs.com/issues/1787) y [expressjs/expressjs.com#2002](https://github.com/expressjs/expressjs.com/discussions/2002)
 - Mantengo el **día a día de expressjs.com**, asegurando que el contenido esté actualizado y que la experiencia de usuario sea la mejor posible.
 
 ## Equipo de Seguridad
@@ -37,7 +37,7 @@ El equipo de triage se encarga de revisar, clasificar los issues y pull requests
   - Express.js - [GitHub Search](https://github.com/search?q=org%3Aexpressjs+involves%3Abjohansebas&type=issues):
     - Participación en más de **426 issues**, incluyendo apertura, cierre y comentarios para ayudar a desbloquear el trabajo de otros colaboradores.
     - Participación en más de **1.000 pull requests**, apoyando revisiones y facilitando el avance del trabajo.
-  - JsHTTP - [GitHub Search](https://github.com/search?q=org%3Ajshttp+involves%3Abjohansebas&type=issues):
+  - Jshttp - [GitHub Search](https://github.com/search?q=org%3Ajshttp+involves%3Abjohansebas&type=issues):
     - Participación en más de **18 issues**, incluyendo apertura, cierre y comentarios para ayudar a desbloquear el trabajo de otros colaboradores.
     - Participación en más de **160 pull requests**, apoyando revisiones y facilitando el avance del trabajo.
   - Pillajs - [GitHub Search](https://github.com/search?q=org%3Apillajs+involves%3Abjohansebas&type=issues):
@@ -49,7 +49,7 @@ El equipo de triage se encarga de revisar, clasificar los issues y pull requests
 
 ## Iniciativas Técnicas
 
-- Lideré el desarrollo de la **versión 1.8.0 del paquete `compression`**, que incluyó soporte para **Brotli** y la adopción de APIs públicas de Node.js - [expressjs/compression#212](https://github.com/expressjs/compression/pull/212)
+- Lideré el desarrollo de la **versión 1.8.0 del paquete `compression`**, que incluyó soporte para **Brotli** y la adopción de APIs públicas de Node.js - [expressjs/compression#212](https://github.com/expressjs/compression/pull/212).
 - Asumí el liderazgo en el desarrollo de **iconv-lite**, además de colaborar para que Express adopte este paquete bajo una gobernanza sólida y sostenible.
 - Lideré el desarrollo de **codemods para la migración de Express v4 a v5**, además de tomar esta iniciativa para futuras migraciones mayores que puedan haber en el futuro.
 - Participo en la investigación para **eliminar el monkey patching en Express v5** - [expressjs/express#6669](https://github.com/expressjs/express/issues/6669) y [nodejs/web-server-frameworks#127](https://github.com/nodejs/web-server-frameworks/issues/127).
