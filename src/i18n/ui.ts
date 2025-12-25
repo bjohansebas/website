@@ -19,8 +19,11 @@ export const ui = {
     "landing.oss.support": "Support",
     "landing.oss.subtitle":
       "I have been helping these projects in my free time.",
+    "landing.oss.moreProjectsIntro":
+      "I'm also involved in other open-source projects. Take a look below.",
     "landing.oss.viewDetails": "View details",
     "landing.oss.contributions": "Contributions:",
+    "landing.oss.moreProjects": "More projects",
     "landing.oss.viewOnGitHub": "View on GitHub:",
     "landing.sponsors.title": "Sponsors",
     "landing.sponsors.subtitle": "Thanks to the people who support my work.",
@@ -76,9 +79,12 @@ export const ui = {
     "landing.hero.description":
       "¡Hola! Soy Sebastian, un <highlight>desarrollador Full-stack</highlight> con experiencia en desarrollo de aplicaciones web. Me apasiona contribuir y construir <highlight>proyectos open-source</highlight>. Me encanta explorar nuevas tecnologías y encontrar soluciones creativas a los desafíos del desarrollo.",
     "landing.oss.title": "Comunidades a las que Contribuyo",
+    "landing.oss.moreProjects": "Más proyectos",
     "landing.oss.support": "Apoyar",
     "landing.oss.subtitle":
       "He estado ayudando a estos proyectos en mi tiempo libre.",
+    "landing.oss.moreProjectsIntro":
+      "También participo en otros proyectos de código abierto. Échales un vistazo abajo.",
     "landing.oss.viewDetails": "Ver detalles",
     "landing.oss.contributions": "Contribuciones:",
     "landing.oss.viewOnGitHub": "Ver en GitHub:",

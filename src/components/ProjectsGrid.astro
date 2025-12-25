@@ -1,0 +1,41 @@
+---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const {
+  items = [],
+  basePath = "/oss",
+  translatePath = (p) => p,
+  class: className,
+} = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section>
+  <div
+    class={className ?? "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"}
+  >
+    {
+      items.map(({ title, slug, icon: Icon }) => (
+        <a
+          href={`${translatePath(basePath)}/${slug}`}
+          class="text-center"
+          aria-label={t("see.project", { name: title })}
+        >
+          <article class="flex h-full w-full cursor-pointer flex-col justify-center gap-2 rounded-2xl border bg-card px-4 py-4 transition-colors hover:border-primary">
+            <header class="flex items-center justify-center gap-3">
+              <div class="flex w-full justify-center">
+                {Icon ? <Icon class="h-7" /> : null}
+              </div>
+            </header>
+            <span class="sr-only">{title}</span>
+            <p class="text-xs text-muted-foreground">
+              {t("landing.oss.viewDetails")}
+            </p>
+          </article>
+        </a>
+      ))
+    }
+  </div>
+</section>

@@ -9,6 +9,7 @@ import {
   useTranslations,
   useTranslatedPath,
 } from "@/i18n/utils";
+import ProjectsGrid from "@/components/ProjectsGrid.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -67,22 +68,10 @@ const PROJECTS = [
     </div>
     <p>{t("landing.oss.subtitle")}</p>
   </header>
-  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-    {
-      PROJECTS.map(({ icon: Icon, slug }) => {
-        return (
-          <a href={`${translatePath("/oss")}/${slug}`} class="text-center">
-            <article class="flex h-full w-full cursor-pointer flex-col justify-center gap-2 rounded-2xl border bg-card px-4 py-4 transition-colors hover:border-primary">
-              <header class="flex items-center justify-center gap-3">
-                <div class="flex w-full justify-center">
-                  <Icon class="h-7" />
-                </div>
-              </header>
-              <p class="text-xs">{t("landing.oss.viewDetails")}</p>
-            </article>
-          </a>
-        );
-      })
-    }
-  </div>
+  <ProjectsGrid
+    class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+    items={PROJECTS}
+    basePath="/oss"
+    translatePath={translatePath}
+  />
 </section>

@@ -2,10 +2,21 @@
 export const prerender = true;
 import Layout from "@/layouts/main.astro";
 import Sponsors from "@ui/landing/Sponsors.astro";
+import ProjectsGrid from "@/components/ProjectsGrid.astro";
 
 import { getCollection, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
-import { defaultLang, showDefaultLang } from "@/i18n/utils";
+import {
+  defaultLang,
+  showDefaultLang,
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from "@/i18n/utils";
+import ExpressLogo from "@/components/icons/logos/express.astro";
+import NodejsLogo from "@/components/icons/logos/nodejs.astro";
+import WebpackLogo from "@/components/icons/logos/webpack.astro";
+import OpenjsLogo from "@/components/icons/logos/openjs.astro";
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection("oss");
@@ -37,6 +48,30 @@ export const getStaticPaths = (async () => {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+const t = useTranslations(lang);
+
+const allPosts = await getCollection("oss");
+const ICONS: Record<string, any> = {
+  express: ExpressLogo,
+  nodejs: NodejsLogo,
+  webpack: WebpackLogo,
+  openjsf: OpenjsLogo,
+};
+
+const otherPosts = allPosts
+  .filter((p) => {
+    const parts = p.id.split("/");
+    const pLang = parts.length > 1 ? parts[0] : defaultLang;
+    return p.id !== post.id && pLang === lang;
+  })
+  .map((p) => {
+    const parts = p.id.split("/");
+    const id = parts.length > 1 ? parts.slice(1).join("/") : parts[0];
+    return { id, title: p.data.title, icon: ICONS[id] ?? null, slug: id };
+  });
 ---
 
 <Layout
@@ -47,6 +82,19 @@ const { Content } = await render(post);
   <h1>{post.data.title}</h1>
   <main class="my-8 flex flex-col gap-y-4">
     <Content />
+    <section class="flex flex-col gap-2">
+      <h2>{t("landing.oss.moreProjects")}</h2>
+      {(<p class="mb-3 text-sm">{t("landing.oss.moreProjectsIntro")}</p>)}
+      {
+        otherPosts.length > 0 && (
+          <ProjectsGrid
+            items={otherPosts}
+            basePath="/oss"
+            translatePath={translatePath}
+          />
+        )
+      }
+    </section>
     <Sponsors />
   </main>
 </Layout>
