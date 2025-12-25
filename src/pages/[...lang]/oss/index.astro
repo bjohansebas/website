@@ -1,0 +1,85 @@
+---
+export const prerender = true;
+import Layout from "@/layouts/main.astro";
+import ProjectsGrid from "@/components/ProjectsGrid.astro";
+
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+  defaultLang,
+  showDefaultLang,
+} from "@/i18n/utils";
+import { LANGUAGES } from "@/i18n/ui";
+import ExpressLogo from "@/components/icons/logos/express.astro";
+import NodejsLogo from "@/components/icons/logos/nodejs.astro";
+import WebpackLogo from "@/components/icons/logos/webpack.astro";
+import OpenjsLogo from "@/components/icons/logos/openjs.astro";
+
+export const getStaticPaths = (async () => {
+  // Generate a path for the root /oss (no prefix) and for each supported
+  // non-default language prefix so the page is available localized.
+  const langs = Object.keys(LANGUAGES);
+
+  const paths = langs.map((l) => {
+    if (l === defaultLang && !showDefaultLang) {
+      return { params: { lang: undefined } };
+    }
+    return { params: { lang: l } };
+  });
+
+  // Ensure unique paths
+  const unique = Array.from(
+    new Map(paths.map((p) => [JSON.stringify(p), p])).values(),
+  );
+
+  return unique;
+}) satisfies GetStaticPaths;
+
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+const t = useTranslations(lang);
+
+const ICONS: Record<string, any> = {
+  express: ExpressLogo,
+  nodejs: NodejsLogo,
+  webpack: WebpackLogo,
+  openjsf: OpenjsLogo,
+};
+
+const posts = await getCollection("oss");
+const items = posts
+  .filter((p) => {
+    const parts = p.id.split("/");
+    const pLang = parts.length > 1 ? parts[0] : defaultLang;
+    return pLang === lang;
+  })
+  .map((p) => {
+    const parts = p.id.split("/");
+    const id = parts.length > 1 ? parts.slice(1).join("/") : parts[0];
+    return { title: p.data.title, slug: id, icon: ICONS[id] ?? null };
+  });
+---
+
+<Layout
+  class="mx-auto mt-8 h-full w-full max-w-[75ch] px-2"
+  title={t("landing.oss.title")}
+  description={t("landing.oss.detailedIntro")}
+>
+  <h1>{t("landing.oss.title")}</h1>
+  <main class="my-8 flex flex-col gap-y-4">
+    <p class="text-muted-foreground">{t("landing.oss.detailedIntro")}</p>
+
+    <ProjectsGrid items={items} basePath="/oss" translatePath={translatePath} />
+  </main>
+</Layout>
+
+<style is:inline>
+  h1 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    margin-bottom: 1rem;
+  }
+</style>

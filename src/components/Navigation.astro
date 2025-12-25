@@ -16,6 +16,7 @@ const translatePath = useTranslatedPath(lang);
 const NAV_LINKS = [
   { name: t("nav.home"), href: translatePath("/") },
   { name: t("nav.resume"), href: translatePath("/cv") },
+  { name: t("nav.oss"), href: translatePath("/oss") },
 ];
 
 const SOCIAL_MEDIA = [
@@ -45,12 +46,12 @@ const IS_INDEX = Astro.url.pathname === translatePath("/");
 >
   <div class="mx-auto flex max-w-[75ch] items-center justify-between">
     <!-- Desktop nav -->
-    <nav class="hidden items-center gap-1 md:flex">
+    <nav class="hidden w-fit items-center gap-1 md:flex">
       {
         NAV_LINKS.map(({ name, href }) => (
           <a
             href={href}
-            class="px-4 font-medium text-muted-foreground transition-all duration-300 hover:border-primary hover:text-primary"
+            class="w-fit px-4 font-medium text-muted-foreground transition-all duration-300 hover:border-primary hover:text-primary"
           >
             {name}
           </a>

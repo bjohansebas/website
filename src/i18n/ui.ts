@@ -19,6 +19,8 @@ export const ui = {
     "landing.oss.support": "Support",
     "landing.oss.subtitle":
       "I have been helping these projects in my free time.",
+    "landing.oss.detailedIntro":
+      "Throughout my open-source journey I've collaborated with multiple communities — leading initiatives, improving security practices, contributing features, and helping maintain documentation and tooling. Below you'll find detailed write-ups for each project where I describe my role, contributions, and the lessons learned along the way.",
     "landing.oss.moreProjectsIntro":
       "I'm also involved in other open-source projects. Take a look below.",
     "landing.oss.viewDetails": "View details",
@@ -35,6 +37,7 @@ export const ui = {
     "footer.text": "Building software with ♥ from 🇨🇴 to the world.",
     "nav.home": "Home",
     "nav.resume": "Resume",
+    "nav.oss": "Communities",
     "hero.a.email.title": "Send e-mail to {name} at {email}",
     "hero.a.phone.title": "Call {name} at {phone}",
     "hero.a.social.title": "Visit {name}'s profile on {network}",
@@ -83,6 +86,8 @@ export const ui = {
     "landing.oss.support": "Apoyar",
     "landing.oss.subtitle":
       "He estado ayudando a estos proyectos en mi tiempo libre.",
+    "landing.oss.detailedIntro":
+      "A lo largo de mi trayectoria en proyectos de código abierto he colaborado con varias comunidades: liderando iniciativas, mejorando prácticas de seguridad, aportando funcionalidades y manteniendo documentación y herramientas. Abajo encontrarás relatos detallados de cada proyecto donde explico mi rol, contribuciones y aprendizajes.",
     "landing.oss.moreProjectsIntro":
       "También participo en otros proyectos de código abierto. Échales un vistazo abajo.",
     "landing.oss.viewDetails": "Ver detalles",
@@ -100,6 +105,7 @@ export const ui = {
     "footer.text": "Construyendo software con ♥ desde 🇨🇴 para el mundo.",
     "nav.home": "Inicio",
     "nav.resume": "Currículum",
+    "nav.oss": "Comunidades",
     "hero.a.email.title":
       "Enviar un correo electrónico a {name} al correo {email}",
     "hero.a.phone.title": "Llamar por teléfono a {name} al número {phone}",
@@ -145,8 +151,10 @@ export const ui = {
 export const routes = {
   en: {
     cv: "cv",
+    oss: "oss",
   },
   es: {
     cv: "cv",
+    oss: "oss",
   },
 };
