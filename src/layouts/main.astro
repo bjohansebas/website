@@ -47,14 +47,20 @@ const url = Astro.url.href;
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="" />
+    <meta
+      property="og:image"
+      content={`${domain.split("//")[1] ?? ""}/favicon.png`}
+    />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:domain" content={domain.split("//")[1] ?? ""} />
     <meta property="twitter:url" content={url} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="" />
+    <meta
+      name="twitter:image"
+      content={`${domain.split("//")[1] ?? ""}/favicon.png`}
+    />
 
     <link rel="me" href="https://mastodon.social/@bjohansebas" />
     <meta name="fediverse:creator" content="@bjohansebas@mastodon.social" />
