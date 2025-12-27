@@ -25,7 +25,8 @@ description =
   "Hi! I'm Sebastian, a Full-stack developer with experience in web application development";
 
 const lang = getLangFromUrl(Astro.url);
-const url = Astro.url.origin;
+const domain = Astro.url.origin;
+const url = Astro.url.href;
 ---
 
 <!doctype html>
@@ -49,7 +50,7 @@ const url = Astro.url.origin;
     <meta property="og:image" content="" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:domain" content={url.split("//")[1] ?? ""} />
+    <meta property="twitter:domain" content={domain.split("//")[1] ?? ""} />
     <meta property="twitter:url" content={url} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
