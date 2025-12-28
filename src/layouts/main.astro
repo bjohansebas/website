@@ -13,12 +13,16 @@ interface Props {
   class?: string;
 }
 
-let { title, description, class: className } = Astro.props;
+let { title: titlePage, description, class: className } = Astro.props;
 
-title =
-  title == null
+const titleOG =
+  titlePage ??
+  "Sebastian Beltran - Full-Stack Developer & Open Source Maintainer";
+
+const title =
+  titlePage == null
     ? "Sebastian Beltran - Full-Stack Developer & Open Source Maintainer (Express.js, Node.js, Webpack)"
-    : `${title} | Sebastian Beltran - Full-Stack Developer & Open Source Maintainer (Express.js, Node.js, Webpack)`;
+    : `${titlePage} | Sebastian Beltran - Full-Stack Developer & Open Source Maintainer (Express.js, Node.js, Webpack)`;
 
 description =
   description ??
@@ -47,14 +51,14 @@ const url = Astro.url.href;
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={`${domain}/favicon.png`} />
+    <meta property="og:image" content={`${domain}/og/${titleOG}`} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:domain" content={domain.split("//")[1] ?? ""} />
     <meta property="twitter:url" content={url} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${domain}/favicon.png`} />
+    <meta name="twitter:image" content={`${domain}/og/${titleOG}`} />
 
     <link rel="me" href="https://mastodon.social/@bjohansebas" />
     <meta name="fediverse:creator" content="@bjohansebas@mastodon.social" />
