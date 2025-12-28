@@ -1,4 +1,3 @@
-import fs from "fs/promises";
 import satori from "satori";
 import sharp from "sharp";
 
@@ -10,18 +9,16 @@ export async function GET({
   const rawId = params?.id;
   const text = rawId ?? "";
 
-  const imgBuf = await fs.readFile(
-    new URL("../../../public/photo-460x460.png", import.meta.url),
+  const imageFile = await fetch(
+    "https://res.cloudinary.com/mindfulyze/image/upload/v1766960828/20-12-2025_iwh7zo.png",
   );
+  const imgBuf = await (await imageFile.blob()).arrayBuffer();
+  const imgBase64 = Buffer.from(imgBuf).toString("base64");
 
-  const imgBase64 = imgBuf.toString("base64");
-
-  const GeinsS = await fs.readFile(
-    new URL(
-      "../../../src/assets/fonts/geist-sans-latin-500-normal.woff",
-      import.meta.url,
-    ),
+  const fontFile = await fetch(
+    "https://api.fontsource.org/v1/fonts/geist-sans/latin-500-normal.woff",
   );
+  const fontData = await fontFile.arrayBuffer();
 
   const element = {
     type: "div",
@@ -91,7 +88,7 @@ export async function GET({
     height: 630,
     fonts: [
       {
-        data: GeinsS,
+        data: fontData,
         name: "Geist Sans",
         weight: 400,
         style: "normal",
