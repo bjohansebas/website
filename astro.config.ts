@@ -6,6 +6,10 @@ import { defaultLang, showDefaultLang } from "./src/i18n/utils";
 
 // https://astro.build/config
 export default defineConfig({
+  redirects: {
+    "/en/": "/",
+    "/en/[...slug]": "/[...slug]",
+  },
   i18n: {
     locales: ["es", "en"],
     defaultLocale: defaultLang,
