@@ -2,6 +2,7 @@
 export const prerender = true;
 import Layout from "@/layouts/main.astro";
 import Sponsors from "@ui/landing/Sponsors.astro";
+import { Image } from "astro:assets";
 
 import { getCollection, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
@@ -79,9 +80,9 @@ const otherPosts = allPosts
   title={post.data.title}
   description={post.data.description}
 >
-  <img
-    width="728"
-    height="364"
+  <Image
+    width={728}
+    height={364}
     src={translatePath(
       `/static/og/communities/${postIdParts.length > 1 ? postIdParts[1] : postIdParts[0]}`,
     )}
