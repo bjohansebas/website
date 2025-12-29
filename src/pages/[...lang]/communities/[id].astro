@@ -59,7 +59,7 @@ const ICONS: Record<string, any> = {
   webpack: WebpackLogo,
   openjsf: OpenjsLogo,
 };
-
+const postIdParts = post.id.split("/");
 const allPosts = await getCollection("oss");
 const otherPosts = allPosts
   .filter((p) => {
@@ -79,6 +79,14 @@ const otherPosts = allPosts
   title={post.data.title}
   description={post.data.description}
 >
+  <img
+    width="728"
+    height="364"
+    src={translatePath(
+      `/static/og/communities/${postIdParts.length > 1 ? postIdParts[1] : postIdParts[0]}`,
+    )}
+    alt={post.data.title}
+  />
   <h1>{post.data.title}</h1>
   <main class="my-8 flex flex-col gap-y-4">
     <Content />
