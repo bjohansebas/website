@@ -3,6 +3,8 @@ import Navigation from "@/components/Navigation.astro";
 import Footer from "@/components/Footer.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import { getLangFromUrl } from "@/i18n/utils";
+import { ui } from "@/i18n/ui";
+import { defaultLang, useTranslatedPath } from "@/i18n/utils";
 import "@fontsource/geist-sans/400.css";
 import "@fontsource/geist-sans/600.css";
 import "@fontsource/geist-sans/700.css";
@@ -31,6 +33,26 @@ description =
 const lang = getLangFromUrl(Astro.url);
 const domain = Astro.url.origin;
 const url = Astro.url.href;
+
+const availableLangs = Object.keys(ui) as (keyof typeof ui)[];
+
+const pathname = Astro.url.pathname;
+const firstSegment = pathname.split("/")[1];
+const pathWithoutLang =
+  firstSegment && firstSegment in ui
+    ? pathname.replace(`/${firstSegment}`, "") || "/"
+    : pathname;
+
+function buildHrefForLang(l: "en" | "es") {
+  const translate = useTranslatedPath(l);
+  const path = pathWithoutLang || "/";
+  return `${domain}${translate(path)}`;
+}
+
+const alternateLinks = availableLangs.map((l) => ({
+  hreflang: l === defaultLang ? "x-default" : l,
+  href: buildHrefForLang(l),
+}));
 ---
 
 <!doctype html>
@@ -46,6 +68,19 @@ const url = Astro.url.href;
     <meta name="viewport" content="width=device-width" />
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow" />
+
+    <link rel="canonical" href={url} />
+
+    {
+      alternateLinks.map((a) => (
+        <>
+          <link rel="alternate" hreflang={a.hreflang} href={a.href} />
+          {a.hreflang === "x-default" ? (
+            <link rel="alternate" hreflang={"en"} href={a.href} />
+          ) : null}
+        </>
+      ))
+    }
 
     <meta property="og:url" content={url} />
     <meta property="og:type" content="website" />
