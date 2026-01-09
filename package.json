@@ -23,6 +23,7 @@
     "@fontsource/geist-sans": "5.2.5",
     "@vercel/speed-insights": "^1.3.1",
     "astro": "5.16.6",
+    "date-fns": "^4.1.0",
     "hotkeypad": "1.0.2",
     "satori": "^0.18.3",
     "sharp": "^0.34.5",

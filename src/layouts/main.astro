@@ -119,7 +119,12 @@ const alternateLinks = availableLangs.map((l) => ({
     </script>
   </head><body class="flex min-h-screen flex-col">
     <Navigation />
-    <div class:list={["flex-1 px-4 lg:px-10 print:p-0", className]}>
+    <div
+      class:list={[
+        "mx-auto max-w-[75ch] flex-1 px-4 lg:px-10 print:p-0",
+        className,
+      ]}
+    >
       <slot />
     </div>
     <Footer />

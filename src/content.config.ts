@@ -16,7 +16,21 @@ const OSS = defineCollection({
   }),
 });
 
+const blog = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    date: z.coerce
+      .date()
+      .describe(
+        "A date string or YAML date that is compatible with JavaScript’s `new Date()` constructor.",
+      ),
+  }),
+});
+
 export const collections = {
   cv: cvCollection,
   oss: OSS,
+  blog,
 };

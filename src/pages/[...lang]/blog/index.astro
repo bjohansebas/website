@@ -1,0 +1,9 @@
+---
+import Layout from "@/layouts/main.astro";
+import { getCollection } from "astro:content";
+const posts = await getCollection("oss");
+---
+
+<Layout>
+  <h1>Blog Index</h1>
+</Layout>
