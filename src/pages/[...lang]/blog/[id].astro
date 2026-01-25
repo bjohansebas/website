@@ -3,7 +3,6 @@ export const prerender = true;
 
 import { defaultLang, showDefaultLang } from "@/i18n/utils";
 import Layout from "@/layouts/main.astro";
-import { Image } from "astro:assets";
 import { format } from "date-fns";
 import { getCollection, render } from "astro:content";
 
@@ -36,17 +35,7 @@ const { Content } = await render(post);
 ---
 
 <Layout>
-  <div class="mx-auto w-full max-w-screen-lg md:-mb-10 lg:-mb-12 xl:-mb-16">
-    <Image
-      src={`/og/${data.title}`}
-      width={728}
-      height={364}
-      loading="eager"
-      alt=""
-      class="w-full object-cover"
-    />
-  </div>
-  <div>
+  <div class="mx-auto mt-8 w-full p-16 pt-0 max-[700px]:p-8">
     <header class="mx-auto w-full max-w-prose text-center">
       <time class="code text-astro-gray-200" datetime={data.date.toISOString()}>
         {format(data.date, "MMMM d, yyyy")}
