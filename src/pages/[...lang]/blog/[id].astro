@@ -8,24 +8,31 @@ import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
   const blog = await getCollection("blog");
+  const isProd = import.meta.env.PROD;
 
-  return blog.map((post) => {
-    const parts = post.id.split("/");
-    let lang: string;
-    let id: string;
+  return blog
+    .filter((post) => {
+      // Si está en producción y el post es draft, no lo mostramos
+      if (isProd && post.data?.draft) return false;
+      return true;
+    })
+    .map((post) => {
+      const parts = post.id.split("/");
+      let lang: string;
+      let id: string;
 
-    if (parts.length > 1) {
-      lang = parts[0];
-      id = parts.slice(1).join("/");
-    } else {
-      lang = defaultLang;
-      id = parts[0];
-    }
+      if (parts.length > 1) {
+        lang = parts[0];
+        id = parts.slice(1).join("/");
+      } else {
+        lang = defaultLang;
+        id = parts[0];
+      }
 
-    const realLang =
-      defaultLang === lang && !showDefaultLang ? undefined : lang;
-    return { params: { lang: realLang, id }, props: { post } };
-  });
+      const realLang =
+        defaultLang === lang && !showDefaultLang ? undefined : lang;
+      return { params: { lang: realLang, id }, props: { post } };
+    });
 }
 
 const { post } = Astro.props;
