@@ -1,9 +1,72 @@
 ---
+import { LANGUAGES } from "@/i18n/ui";
+import {
+  defaultLang,
+  getLangFromUrl,
+  showDefaultLang,
+  useTranslatedPath,
+  useTranslations,
+} from "@/i18n/utils";
 import Layout from "@/layouts/main.astro";
+import { format } from "date-fns";
+import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
-const posts = await getCollection("oss");
+const posts = await getCollection("blog");
+
+export const getStaticPaths = (async () => {
+  const langs = Object.keys(LANGUAGES);
+
+  const paths = langs.map((l) => {
+    if (l === defaultLang && !showDefaultLang) {
+      return { params: { lang: undefined } };
+    }
+    return { params: { lang: l } };
+  });
+
+  const unique = Array.from(
+    new Map(paths.map((p) => [JSON.stringify(p), p])).values(),
+  );
+
+  return unique;
+}) satisfies GetStaticPaths;
+
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+const t = useTranslations(lang);
+
+const items = posts.filter((p) => {
+  const parts = p.id.split("/");
+  const pLang = parts.length > 1 ? parts[0] : defaultLang;
+  return pLang === lang;
+});
 ---
 
-<Layout>
-  <h1>Blog Index</h1>
+<Layout class="mx-auto mt-8 h-full w-full px-2" title={"Blog"}>
+  {
+    items && (
+      <ul class="mt-6 flex w-full flex-col gap-y-6">
+        {items.map((post) => {
+          const parts = post.id.split("/");
+          const id = parts.length > 1 ? parts.slice(1).join("/") : parts[0];
+          return (
+            <li class="mb-2 flex w-full list-none gap-x-4 pb-3">
+              <time
+                class="min-w-fit text-sm"
+                datetime={post.data.date.toISOString()}
+              >
+                {format(post.data.date, "MMMM d, yyyy")}
+              </time>
+              <div class="flex w-full flex-col gap-y-2">
+                <a href={translatePath(`/blog/${id}`)}>
+                  <h2 class="text-xl">{post.data.title}</h2>
+                </a>
+                <p class="">{post.data.description}</p>
+                <a href={translatePath(`/blog/${id}`)}>Read more...</a>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    )
+  }
 </Layout>
