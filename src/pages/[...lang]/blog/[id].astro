@@ -37,6 +37,19 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 
+const currentLang = post.id.split("/")[0];
+
+const blog = await getCollection("blog");
+const relatedPosts = blog
+  .filter((post) => {
+    // Excluye el propio blog
+    if (post.id === Astro.props.post.id) return false;
+    // Excluye blogs de otros idiomas
+    const lang = post.id.split("/")[0];
+    return lang === currentLang;
+  })
+  .slice(0, 3);
+
 const { data } = post;
 const { Content } = await render(post);
 ---
@@ -57,6 +70,35 @@ const { Content } = await render(post);
       <article class="prose">
         <Content />
       </article>
+      <footer>
+        {
+          relatedPosts.length > 0 ? (
+            <>
+              <h2 class="mb-4 mt-12 text-2xl font-bold">Related Posts</h2>
+              <ul class="list-disc pl-5">
+                {relatedPosts.map((related) => {
+                  const lang = related.id.split("/")[0];
+                  const id = related.id.split("/").slice(1).join("/");
+                  const href =
+                    lang === defaultLang && !showDefaultLang
+                      ? `/blog/${id}`
+                      : `/${lang}/blog/${id}`;
+                  return (
+                    <li class="mb-2">
+                      <a
+                        href={href}
+                        class="text-astro-blue-600 hover:underline"
+                      >
+                        {related.data.title}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
+          ) : null
+        }
+      </footer>
     </main>
   </div>
 </Layout>
