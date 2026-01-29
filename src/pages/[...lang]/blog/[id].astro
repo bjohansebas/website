@@ -41,7 +41,7 @@ const { data } = post;
 const { Content } = await render(post);
 ---
 
-<Layout>
+<Layout title={data.title} description={data.description}>
   <div class="mx-auto mt-8 w-full p-16 pt-0 max-[700px]:p-8">
     <header class="mx-auto w-full max-w-prose text-center">
       <time class="code text-astro-gray-200" datetime={data.date.toISOString()}>

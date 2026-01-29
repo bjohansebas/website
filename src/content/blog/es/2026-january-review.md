@@ -1,7 +1,7 @@
 ---
-title: January 2025 Review
+title: "Resumen de enero de 2025"
 date: "January 29, 2025"
-draft: true
+description: "Actualización mensual de contribuciones open-source: releases de iconv-lite, cambios clave en Express y on-finished, mejoras de rendimiento, trabajo en Webpack y avances en tooling, seguridad y documentación."
 ---
 
 Hola 👋
@@ -77,7 +77,7 @@ Junto con esto, vienen cosas nuevas e interesantes que espero poder compartir pr
 
 - Además, se lanzaron nuevas versiones de express-session y serve-index, que incluyen varias mejoras y correcciones de errores.
 
-Si deseas apoyarme directamente, puedes hacerlo a través de [GitHub Sponsors](https://github.com/sponsors/bjohansebas) o mediante PayPal [https://paypal.me/bjohansebas](https://paypal.me/bjohansebas).
+Si deseas apoyarme directamente, puedes hacerlo a través de [GitHub Sponsors](https://github.com/sponsors/bjohansebas).
 
 Además, actualmente estoy buscando patrocinio para poder adquirir una nueva laptop que me permita seguir contribuyendo de forma sostenible al open-source. Puedes leer el contexto completo y los detalles en este [post](/es/blog/sponsor-my-laptop)
 

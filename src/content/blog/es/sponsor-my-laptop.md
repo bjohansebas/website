@@ -1,6 +1,7 @@
 ---
 title: ¡Patrocina mi laptop!
 date: "January 29, 2026"
+description: "Comparto el contexto detrás de mi trabajo en open-source, el estado de mi equipo actual y por qué estoy buscando apoyo para poder seguir contribuyendo sin limitaciones técnicas."
 ---
 
 Durante varios años he estado contribuyendo activamente a proyectos open-source que usan millones de desarrolladores todos los días, como **Express**, **Webpack** y distintas herramientas del ecosistema **Node.js**.
