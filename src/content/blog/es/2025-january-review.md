@@ -1,6 +1,6 @@
 ---
 title: January 2025 Review
-date: "January 27, 2025"
+date: "January 29, 2025"
 draft: true
 ---
 
@@ -77,26 +77,8 @@ Junto con esto, vienen cosas nuevas e interesantes que espero poder compartir pr
 
 - Además, se lanzaron nuevas versiones de express-session y serve-index, que incluyen varias mejoras y correcciones de errores.
 
-## 💻 Buscando apoyo para una nueva laptop
+Si deseas apoyarme directamente, puedes hacerlo a través de [GitHub Sponsors](https://github.com/sponsors/bjohansebas) o mediante PayPal [https://paypal.me/bjohansebas](https://paypal.me/bjohansebas).
 
-Actualmente estoy buscando funding para una nueva laptop que me permita seguir trabajando de forma sostenible en estos proyectos open-source.
-
-Gran parte de mi trabajo depende de contar con un entorno de desarrollo estable y potente, y mi equipo actual ya está llegando a sus límites, especialmente para tareas de builds, testing y desarrollo en proyectos grandes como Node.js, Express y Webpack.
-
-Mi equipo actual es un [HP Notebook - 14-ac186la (ENERGY STAR)](https://support.hp.com/us-en/product/details/hp-14-notebook-pc-series/model/9068285). Tiene más de 10 años de uso y ha sido mi herramienta principal para contribuir al ecosistema open-source durante todo este tiempo.
-
-Contar con una nueva laptop me ayudaría a:
-
-- Mantener y mejorar los proyectos en los que participo.
-- Responder más rápido a issues, PRs y reportes de seguridad.
-- Seguir contribuyendo activamente al ecosistema open-source.
-
-Si quieres conocer más sobre mi trabajo y los proyectos en los que he estado involucrado a lo largo del tiempo, puedes verlo aquí: 👉 <http://bjohansebas.me/es/communities>
-
-Si deseas apoyar directamente este objetivo, puedes hacerlo a través de GitHub Sponsors: 👉 <https://github.com/sponsors/bjohansebas> o atraves de mi [PayPal](https://paypal.me/bjohansebas).
-
-Este trabajo lo hago porque creo profundamente en el valor del open-source y en la importancia de mantener saludable el ecosistema que usamos todos los días.
-
-Poder contar con un mejor equipo me permitiría seguir haciéndolo con más foco, estabilidad y continuidad.
+Además, actualmente estoy buscando patrocinio para poder adquirir una nueva laptop que me permita seguir contribuyendo de forma sostenible al open-source. Puedes leer el contexto completo y los detalles en este [post](/es/blog/sponsor-my-laptop)
 
 Gracias por leer y por apoyar de la forma que sea este camino 🙏.

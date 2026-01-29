@@ -63,6 +63,6 @@ Cualquier aporte, grande o pequeño, ayuda. Y si no puedes contribuir económica
 
 ## Gracias
 
-Open-source no se mantiene solo con buenas intenciones: también depende de las personas, su tiempo y las herramientas que usan para trabajar.
+Open-source no se mantiene solo con buenas intenciones también depende de las personas, su tiempo y las herramientas que usan para trabajar.
 
 Gracias por leer, por usar open-source y por apoyar de la forma que sea este camino 🙏
