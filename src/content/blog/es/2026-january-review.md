@@ -1,6 +1,6 @@
 ---
-title: "Resumen de enero de 2025"
-date: "January 29, 2025"
+title: "Resumen de enero de 2026"
+date: "January 29, 2026"
 description: "Actualización mensual de contribuciones open-source: releases de iconv-lite, cambios clave en Express y on-finished, mejoras de rendimiento, trabajo en Webpack y avances en tooling, seguridad y documentación."
 ---
 
@@ -14,11 +14,11 @@ Entre releases, trabajo en Express, Webpack, mejoras de rendimiento, seguridad y
 
 Este mes comenzó con varias publicaciones importantes:
 
-- [iconv-lite@0.7.2]():
+- [iconv-lite@0.7.2](https://github.com/pillarjs/iconv-lite/releases/tag/v0.7.2):
 
   Esta versión corrigió un problema con TypeScript. Las definiciones de tipos ahora funcionan correctamente, por lo que puedes usar el paquete sin inconvenientes en proyectos TypeScript.
 
-- [iconv-lite@alpha.1]():
+- [iconv-lite@alpha.1](https://github.com/pillarjs/iconv-lite/releases/tag/v1.0.0-alpha.1):
   Incluye gran parte del trabajo realizado por [Alexander Shtuchkin](https://github.com/ashtuchkin) y presenta la idea de tener backers para diferentes implementaciones de buffers. Además, ahora utiliza TextDecoder, lo que mejora considerablemente el soporte tanto en navegadores como en Node.js y otros runtimes.
 
 ## 🚀 Próximos cambios en Express y su ecosistema
