@@ -1,8 +1,17 @@
 {
   "counts": {
-    "total": 3
+    "total": 4
   },
   "sponsors": [
+    {
+      "id": 9919,
+      "login": "github",
+      "name": "GitHub",
+      "avatar": "https://avatars.githubusercontent.com/u/9919?v=4",
+      "url": "https://github.com/about",
+      "tier": null,
+      "lastActivity": null
+    },
     {
       "id": 12037269,
       "login": "ovflowd",
