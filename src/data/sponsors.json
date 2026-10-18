@@ -1,6 +1,6 @@
 {
   "counts": {
-    "total": 4
+    "total": 5
   },
   "sponsors": [
     {
@@ -16,7 +16,7 @@
       "id": 12037269,
       "login": "ovflowd",
       "name": "Claudio Wunder",
-      "avatar": "https://avatars.githubusercontent.com/u/12037269?u=2ad830c85323617f8cfae4dbc5a8ed0e43528ed2&v=4",
+      "avatar": "https://avatars.githubusercontent.com/u/12037269?u=f7627328eb46a739a8ba2d8ae3f8e701d3d0c568&v=4",
       "url": "https://github.com/ovflowd",
       "tier": null,
       "lastActivity": null
@@ -36,6 +36,15 @@
       "name": "Mert Şişmanoğlu",
       "avatar": "https://avatars.githubusercontent.com/u/61623638?u=59dd885b68ff1832f9ab3b4a4446896358c23442&v=4",
       "url": "https://mertsismanoglu.com",
+      "tier": null,
+      "lastActivity": null
+    },
+    {
+      "id": 78830094,
+      "login": "codemod",
+      "name": "Codemod",
+      "avatar": "https://avatars.githubusercontent.com/u/78830094?v=4",
+      "url": "https://codemod.com",
       "tier": null,
       "lastActivity": null
     }
